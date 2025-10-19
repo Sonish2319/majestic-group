@@ -34,3 +34,53 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+
+# Majestic Group - Next.js Project Setup
+
+## Project Structure
+```
+majestic-group/
+├── app/
+│   ├── layout.js
+│   ├── page.js
+│   ├── globals.css
+│   └── components/
+│       ├── Header.js
+│       ├── Hero.js
+│       ├── ProductsSection.js
+│       ├── BrandsSection.js
+│       ├── AboutSection.js
+│       ├── TestimonialsSection.js
+│       └── Footer.js
+├── public/
+│   └── images/
+│       ├── hero-laundry.png
+│       ├── nepakids.png
+│       ├── sukoon.png
+│       ├── bambusa.png
+│       ├── candy.png
+│       ├── elba.png
+│       ├── elica.png
+│       ├── about-team.jpg
+│       └── testimonial-avatar.jpg
+├── package.json
+├── next.config.js
+└── tailwind.config.js
+```
+
+## Installation Steps
+
+1. **Create Next.js App:**
+npx create-next-app@latest majestic-group
+
+
+npm install framer-motion lucide-react
+
+**Add your images to the `public/images/` folder**
+
+**Run the development server:**
+npm run dev
+
+
