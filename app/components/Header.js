@@ -102,7 +102,6 @@
 //   )
 // }
 
-
 'use client'
 
 import { useState } from 'react'
@@ -133,13 +132,13 @@ export default function Header() {
               <button className="text-gray-700 hover:text-[#5c4033] transition flex items-center">
                 OUR BRANDS <ChevronDown className="ml-1 w-4 h-4" />
               </button>
-              <div className="absolute top-full left-0 mt-2 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-                <a href="/brands" className="block px-4 py-2 hover:bg-gray-100">Elba</a>
-                <a href="/brands" className="block px-4 py-2 hover:bg-gray-100">Candy</a>
-                <a href="/brands" className="block px-4 py-2 hover:bg-gray-100">Elica</a>
-                <a href="/brands" className="block px-4 py-2 hover:bg-gray-100">Bambusa</a>
-                <a href="/brands" className="block px-4 py-2 hover:bg-gray-100">Sukoon</a>
-                <a href="/brands" className="block px-4 py-2 hover:bg-gray-100">NepaKids</a>
+              <div className="absolute top-full left-0 mt-2 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                <a href="/brands/elba" className="block px-4 py-2 hover:bg-gray-100">Elba</a>
+                <a href="/brands/candy" className="block px-4 py-2 hover:bg-gray-100">Candy</a>
+                <a href="/brands/elica" className="block px-4 py-2 hover:bg-gray-100">Elica</a>
+                <a href="/brands/bambusa" className="block px-4 py-2 hover:bg-gray-100">Bambusa</a>
+                <a href="/brands/sukoon" className="block px-4 py-2 hover:bg-gray-100">Sukoon</a>
+                <a href="/brands/nepakids" className="block px-4 py-2 hover:bg-gray-100">NepaKids</a>
               </div>
             </div>
             <a href="/gallery" className="text-gray-700 hover:text-[#5c4033] transition">
@@ -181,12 +180,12 @@ export default function Header() {
                 </button>
                 {brandsOpen && (
                   <div className="ml-4 mt-2 space-y-2">
-                    <a href="/brands" className="block text-gray-600">Elba</a>
-                    <a href="/brands" className="block text-gray-600">Candy</a>
-                    <a href="/brands" className="block text-gray-600">Elica</a>
-                    <a href="/brands" className="block text-gray-600">Bambusa</a>
-                    <a href="/brands" className="block text-gray-600">Sukoon</a>
-                    <a href="/brands" className="block text-gray-600">NepaKids</a>
+                    <a href="/brands/elba" className="block text-gray-600">Elba</a>
+                    <a href="/brands/candy" className="block text-gray-600">Candy</a>
+                    <a href="/brands/elica" className="block text-gray-600">Elica</a>
+                    <a href="/brands/bambusa" className="block text-gray-600">Bambusa</a>
+                    <a href="/brands/sukoon" className="block text-gray-600">Sukoon</a>
+                    <a href="/brands/nepakids" className="block text-gray-600">NepaKids</a>
                   </div>
                 )}
               </div>
