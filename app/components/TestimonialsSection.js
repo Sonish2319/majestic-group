@@ -37,26 +37,39 @@ function TestimonialCard({ testimonial, index }) {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.5, delay: index * 0.2 }}
-      className="bg-[#f5e6d3] rounded-lg p-8 shadow-lg hover:shadow-xl transition-shadow"
+      className="relative bg-[#f5e6d3] rounded-2xl p-8 shadow-lg transition-all overflow-hidden group text-center flex flex-col items-center justify-between"
+      style={{
+        width: '413px',
+        height: '419px',
+        opacity: 1,
+      }}
     >
-      <Quote className="w-8 h-8 text-[#5c4033] mb-4" />
-      <p className="text-gray-700 mb-6 italic leading-relaxed">
+      {/* Hover Border Animation */}
+      <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-[#5c4033] transition-all duration-500"></div>
+
+      {/* Quotation Icon */}
+      <Quote className="absolute top-5 left-5 w-7 h-7 text-[#5c4033] opacity-80 group-hover:scale-110 transition-transform duration-300" />
+
+      {/* Avatar */}
+      <div className="relative w-20 h-20 rounded-full overflow-hidden mb-6 border-4 border-[#5c4033]/30 group-hover:border-[#5c4033] transition-all duration-500">
+        <Image
+          src={testimonial.avatar}
+          alt={testimonial.name}
+          fill
+          className="object-cover"
+          loading="lazy"
+        />
+      </div>
+
+      {/* Text */}
+      <p className="text-gray-800 mb-6 italic leading-relaxed max-w-[90%]">
         "{testimonial.text}"
       </p>
-      <div className="flex items-center gap-4">
-        <div className="relative w-12 h-12 rounded-full overflow-hidden">
-          <Image
-            src={testimonial.avatar}
-            alt={testimonial.name}
-            fill
-            className="object-cover"
-            loading="lazy"
-          />
-        </div>
-        <div>
-          <h4 className="font-bold text-gray-800">{testimonial.name}</h4>
-          <p className="text-sm text-gray-600">{testimonial.location}</p>
-        </div>
+
+      {/* Name and Location */}
+      <div>
+        <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
+        <p className="text-sm text-gray-600">{testimonial.location}</p>
       </div>
     </motion.div>
   )
@@ -78,11 +91,11 @@ export default function TestimonialsSection() {
         >
           <p className="text-sm text-gray-500 mb-2">| Testimonials</p>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-            Because trust isn't optional it's essential.
+            Because trust isn't optional — it's essential.
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="flex flex-wrap justify-center gap-8">
           {testimonials.map((testimonial, index) => (
             <TestimonialCard
               key={testimonial.name + index}

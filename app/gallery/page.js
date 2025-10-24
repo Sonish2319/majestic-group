@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { X } from 'lucide-react'
 
 const galleryData = [
@@ -11,6 +12,7 @@ const galleryData = [
     brand: 'Candy',
     tagline: 'Simply, Smart',
     logo: '/images/candy-logo.png',
+    route: '/brands/candy',
     images: [
       '/images/gallery/candy/candy-1.png',
       '/images/gallery/candy/candy-2.png',
@@ -24,6 +26,7 @@ const galleryData = [
     brand: 'Elba',
     tagline: 'Italian Taste Experience',
     logo: '/images/elba-logo.png',
+    route: '/brands/elba',
     images: [
       '/images/gallery/elba/elba-1.png',
       '/images/gallery/elba/elba-2.png',
@@ -40,6 +43,7 @@ const galleryData = [
     brand: 'Elica',
     tagline: '',
     logo: '/images/elica-logo.png',
+    route: '/brands/elica',
     images: [
       '/images/gallery/elica/elica-1.png',
       '/images/gallery/elica/elica-2.png',
@@ -53,6 +57,7 @@ const galleryData = [
     brand: 'NepaKids',
     tagline: '',
     logo: '/images/nepakids-logo.png',
+    route: '/brands/nepakids',
     images: [
       '/images/gallery/nepakids/nepakids-1.png',
       '/images/gallery/nepakids/nepakids-2.png',
@@ -65,6 +70,7 @@ const galleryData = [
     brand: 'Sukoon',
     tagline: 'Waves of Freedom',
     logo: '/images/sukoon-logo.png',
+    route: '/brands/sukoon',
     images: [
       '/images/gallery/sukoon/sukoon-1.png',
       '/images/gallery/sukoon/sukoon-2.png',
@@ -75,6 +81,7 @@ const galleryData = [
     brand: 'Bambusa',
     tagline: '',
     logo: '/images/bambusa-logo.png',
+    route: '/brands/bambusa',
     images: [
       '/images/gallery/bambusa/bambusa-1.png',
       '/images/gallery/bambusa/bambusa-2.png',
@@ -112,7 +119,7 @@ function Lightbox({ image, onClose }) {
   )
 }
 
-function GallerySection({ brand, tagline, logo, images, index }) {
+function GallerySection({ brand, tagline, logo, route, images, index }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [selectedImage, setSelectedImage] = useState(null)
@@ -128,7 +135,7 @@ function GallerySection({ brand, tagline, logo, images, index }) {
       {/* Brand Header */}
       <div className="flex items-center justify-center mb-8">
         <div className="text-center">
-          <div className="relative h-16 w-48 mx-auto mb-2">
+          <Link href={route} className="inline-block relative h-16 w-48 mx-auto mb-2 hover:opacity-90 transition-opacity">
             <Image
               src={logo}
               alt={brand}
@@ -136,10 +143,8 @@ function GallerySection({ brand, tagline, logo, images, index }) {
               className="object-contain"
               loading="lazy"
             />
-          </div>
-          {tagline && (
-            <p className="text-gray-600 text-sm">{tagline}</p>
-          )}
+          </Link>
+          {tagline && <p className="text-gray-600 text-sm">{tagline}</p>}
         </div>
       </div>
 
@@ -208,6 +213,7 @@ export default function GalleryPage() {
             brand={section.brand}
             tagline={section.tagline}
             logo={section.logo}
+            route={section.route}
             images={section.images}
             index={index}
           />

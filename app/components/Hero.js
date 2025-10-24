@@ -4,27 +4,32 @@ import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 const slides = [
   {
     title: 'Bespoke AI Laundry Combo',
     subtitle: 'Introducing',
     image: '/images/hero-laundry.png',
+    link: '/brands/elba',
   },
   {
     title: 'Premium Kitchen Appliances',
     subtitle: 'Discover',
     image: '/images/elba.png',
+    link: '/gallery',
   },
   {
     title: 'Eco-Friendly Products',
     subtitle: 'Experience',
     image: '/images/bambusa.png',
+    link: '/brands/bambusa',
   },
 ]
 
 export default function Hero() {
   const [current, setCurrent] = useState(0)
+  const router = useRouter()
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -36,8 +41,12 @@ export default function Hero() {
   const prev = () => setCurrent((current - 1 + slides.length) % slides.length)
   const next = () => setCurrent((current + 1) % slides.length)
 
+  const handleExplore = () => {
+    router.push(slides[current].link)
+  }
+
   return (
-    <section id="home" className="relative h-screen bg-black mt-16">
+    <section id="home" className="relative h-screen bg-black mt-16 overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
@@ -57,6 +66,7 @@ export default function Hero() {
             />
           </div>
 
+          {/* Text center */}
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -74,18 +84,27 @@ export default function Hero() {
             >
               {slides[current].title}
             </motion.h2>
-            <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="bg-white text-black px-6 py-3 rounded-md flex items-center gap-2 hover:bg-gray-200 transition"
-            >
-              Explore Products <ArrowRight className="w-5 h-5" />
-            </motion.button>
           </div>
+
+          {/* Explore button bottom right */}
+          <motion.button
+            onClick={handleExplore}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="absolute bottom-15 right-10 text-white border-2 border-[#663E3E] rounded-[10px] px-5 py-3 flex items-center gap-[30px] hover:bg-[#663E3E] hover:text-white transition"
+            style={{
+              width: '235px',
+              height: '45px',
+              opacity: 1,
+            }}
+          >
+            Explore Products <ArrowRight className="w-5 h-5" />
+          </motion.button>
         </motion.div>
       </AnimatePresence>
 
+      {/* Navigation arrows */}
       <button
         onClick={prev}
         className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 p-3 rounded-full transition"
@@ -99,14 +118,20 @@ export default function Hero() {
         <ChevronRight className="w-6 h-6 text-white" />
       </button>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
+      {/* Dots bottom left */}
+      <div className="absolute bottom-15 left-10 flex gap-3 items-center">
         {slides.map((_, idx) => (
-          <button
+          <motion.button
             key={idx}
             onClick={() => setCurrent(idx)}
-            className={`w-3 h-3 rounded-full transition ${
-              idx === current ? 'bg-white' : 'bg-white/40'
-            }`}
+            animate={{
+              width: idx === current ? 24 : 10,
+              height: 10,
+              borderRadius: 20,
+              backgroundColor: idx === current ? '#fff' : 'rgba(255,255,255,0.4)',
+            }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="transition-all"
           />
         ))}
       </div>
