@@ -105,12 +105,47 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter, usePathname } from 'next/navigation'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [brandsOpen, setBrandsOpen] = useState(false)
+  const router = useRouter()
+  const pathname = usePathname()
+
+  // Scroll to footer (works even if on other pages)
+  const handleContactClick = async (e) => {
+    e.preventDefault()
+    setIsOpen(false)
+
+    if (pathname !== '/') {
+      await router.push('/')
+      setTimeout(() => {
+        const footer = document.querySelector('footer')
+        if (footer) footer.scrollIntoView({ behavior: 'smooth' })
+      }, 600)
+    } else {
+      const footer = document.querySelector('footer')
+      if (footer) footer.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  // Check if menu item should be active (based on route)
+  const isActive = (href) => {
+    if (href === '/' && pathname === '/') return false // HOME never highlighted
+    return pathname.startsWith(href)
+  }
+
+  const baseClasses =
+    'px-3 py-2 rounded-md transition font-medium text-sm md:text-base'
+
+  const activeClasses = 'bg-[#5c4033] text-white'
+  const inactiveClasses = 'text-gray-700 hover:text-[#5c4033]'
+
+  const menuItemClass = (href) =>
+    `${baseClasses} ${isActive(href) ? activeClasses : inactiveClasses}`
 
   return (
     <header className="fixed top-0 w-full bg-white shadow-md z-50">
@@ -124,42 +159,71 @@ export default function Header() {
             <h1 className="text-2xl font-bold text-gray-800">MAJESTIC GROUP</h1>
           </motion.div>
 
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="/" className="text-gray-700 hover:text-[#5c4033] transition">
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-4">
+            <button
+              onClick={() => router.push('/')}
+              className={`${baseClasses} ${inactiveClasses}`}
+            >
               HOME
-            </a>
+            </button>
+
             <div className="relative group">
-              <button className="text-gray-700 hover:text-[#5c4033] transition flex items-center">
-                OUR BRANDS <ChevronDown className="ml-1 w-4 h-4" />
+              <button
+                className={`${baseClasses} ${
+                  pathname.startsWith('/brands') ? activeClasses : inactiveClasses
+                } flex items-center`}
+              >
+                OUR BRANDS
+                <ChevronDown className="ml-1 w-4 h-4" />
               </button>
               <div className="absolute top-full left-0 mt-2 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-                <a href="/brands/elba" className="block px-4 py-2 hover:bg-gray-100">Elba</a>
-                <a href="/brands/candy" className="block px-4 py-2 hover:bg-gray-100">Candy</a>
-                <a href="/brands/elica" className="block px-4 py-2 hover:bg-gray-100">Elica</a>
-                <a href="/brands/bambusa" className="block px-4 py-2 hover:bg-gray-100">Bambusa</a>
-                <a href="/brands/sukoon" className="block px-4 py-2 hover:bg-gray-100">Sukoon</a>
-                <a href="/brands/nepakids" className="block px-4 py-2 hover:bg-gray-100">NepaKids</a>
+                {['Elba', 'Candy', 'Elica', 'Bambusa', 'Sukoon', 'NepaKids'].map(
+                  (brand) => (
+                    <button
+                      key={brand}
+                      onClick={() =>
+                        router.push(`/brands/${brand.toLowerCase()}`)
+                      }
+                      className={`block w-full text-left px-4 py-2 ${
+                        pathname === `/brands/${brand.toLowerCase()}`
+                          ? 'bg-[#5c4033] text-white'
+                          : 'text-gray-700 hover:bg-gray-100 hover:text-[#5c4033]'
+                      }`}
+                    >
+                      {brand}
+                    </button>
+                  )
+                )}
               </div>
             </div>
-            <a href="/gallery" className="text-gray-700 hover:text-[#5c4033] transition">
+
+            <button
+              onClick={() => router.push('/gallery')}
+              className={menuItemClass('/gallery')}
+            >
               GALLERY
-            </a>
-            <a href="/about" className="text-gray-700 hover:text-[#5c4033] transition">
+            </button>
+
+            <button
+              onClick={() => router.push('/about')}
+              className={menuItemClass('/about')}
+            >
               ABOUT US
-            </a>
-            <a href="/contact" className="text-gray-700 hover:text-[#5c4033] transition">
+            </button>
+
+            <button onClick={handleContactClick} className={menuItemClass('#contact')}>
               CONTACT US
-            </a>
+            </button>
           </div>
 
-          <button
-            className="md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-          >
+          {/* Mobile Toggle Button */}
+          <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <X /> : <Menu />}
           </button>
         </div>
 
+        {/* Mobile Menu */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -168,36 +232,82 @@ export default function Header() {
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden mt-4 space-y-4"
             >
-              <a href="/" className="block text-gray-700 hover:text-[#5c4033]">
+              <button
+                onClick={() => {
+                  router.push('/')
+                  setIsOpen(false)
+                }}
+                className={`${baseClasses} ${inactiveClasses}`}
+              >
                 HOME
-              </a>
+              </button>
+
               <div>
                 <button
                   onClick={() => setBrandsOpen(!brandsOpen)}
-                  className="w-full text-left text-gray-700 hover:text-[#5c4033] flex items-center justify-between"
+                  className={`${baseClasses} flex items-center justify-between ${
+                    pathname.startsWith('/brands')
+                      ? activeClasses
+                      : inactiveClasses
+                  }`}
                 >
-                  OUR BRANDS <ChevronDown className={`w-4 h-4 transition-transform ${brandsOpen ? 'rotate-180' : ''}`} />
+                  OUR BRANDS
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform ${
+                      brandsOpen ? 'rotate-180' : ''
+                    }`}
+                  />
                 </button>
                 {brandsOpen && (
                   <div className="ml-4 mt-2 space-y-2">
-                    <a href="/brands/elba" className="block text-gray-600">Elba</a>
-                    <a href="/brands/candy" className="block text-gray-600">Candy</a>
-                    <a href="/brands/elica" className="block text-gray-600">Elica</a>
-                    <a href="/brands/bambusa" className="block text-gray-600">Bambusa</a>
-                    <a href="/brands/sukoon" className="block text-gray-600">Sukoon</a>
-                    <a href="/brands/nepakids" className="block text-gray-600">NepaKids</a>
+                    {['Elba', 'Candy', 'Elica', 'Bambusa', 'Sukoon', 'NepaKids'].map(
+                      (brand) => (
+                        <button
+                          key={brand}
+                          onClick={() => {
+                            router.push(`/brands/${brand.toLowerCase()}`)
+                            setIsOpen(false)
+                          }}
+                          className={`block w-full text-left px-3 py-2 rounded-md ${
+                            pathname === `/brands/${brand.toLowerCase()}`
+                              ? activeClasses
+                              : 'text-gray-700 hover:text-[#5c4033]'
+                          }`}
+                        >
+                          {brand}
+                        </button>
+                      )
+                    )}
                   </div>
                 )}
               </div>
-              <a href="/gallery" className="block text-gray-700 hover:text-[#5c4033]">
+
+              <button
+                onClick={() => {
+                  router.push('/gallery')
+                  setIsOpen(false)
+                }}
+                className={menuItemClass('/gallery')}
+              >
                 GALLERY
-              </a>
-              <a href="/about" className="block text-gray-700 hover:text-[#5c4033]">
+              </button>
+
+              <button
+                onClick={() => {
+                  router.push('/about')
+                  setIsOpen(false)
+                }}
+                className={menuItemClass('/about')}
+              >
                 ABOUT US
-              </a>
-              <a href="/contact" className="block text-gray-700 hover:text-[#5c4033]">
+              </button>
+
+              <button
+                onClick={handleContactClick}
+                className={menuItemClass('#contact')}
+              >
                 CONTACT US
-              </a>
+              </button>
             </motion.div>
           )}
         </AnimatePresence>
