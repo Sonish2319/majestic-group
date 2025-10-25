@@ -58,7 +58,7 @@ export default function SukoonPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section with Background */}
-      <section className="relative h-[60vh] overflow-hidden">
+      <section className="relative h-[50vh] overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="/images/brands/sukoon-hero-bg.jpg"

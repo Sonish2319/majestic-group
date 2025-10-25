@@ -183,27 +183,41 @@ export default function GalleryPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[50vh] bg-gradient-to-br from-gray-900 to-[#5c4033] flex items-center justify-center">
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 text-center text-white px-4">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-5xl md:text-7xl font-bold mb-4"
-          >
-            GALLERY
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-xl"
-          >
-            Trusted by families across Nepal
-          </motion.p>
-        </div>
-      </section>
+<section className="relative h-[40vh] flex items-center justify-center overflow-hidden">
+  {/* Background image */}
+  <Image
+    src="/images/about-meeting1.png" 
+    alt="Gallery background"
+    fill
+    priority
+    className="object-cover object-center brightness-115 contrast-105"
+    sizes="100vw"
+  />
+
+  {/* Gradient overlay — lighter, so background is more visible */}
+  <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 to-[#5c4033]/50" />
+
+  {/* Text content */}
+  <div className="relative z-10 text-center text-white px-4">
+    <motion.h1
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="text-5xl md:text-7xl font-bold mb-4 drop-shadow-md"
+    >
+      GALLERY
+    </motion.h1>
+    <motion.p
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+      className="text-lg md:text-xl drop-shadow-sm"
+    >
+      Trusted by families across Nepal
+    </motion.p>
+  </div>
+</section>
+
 
       {/* Gallery Sections */}
       <div className="container mx-auto px-4 py-16">

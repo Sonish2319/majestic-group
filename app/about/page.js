@@ -57,28 +57,44 @@ function FadeInSection({ children, delay = 0 }) {
 export default function AboutPage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-[60vh] bg-gradient-to-br from-gray-900 to-[#5c4033] flex items-center justify-center">
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 text-center text-white px-4">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-5xl md:text-7xl font-bold mb-4"
-          >
-            ABOUT US
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl"
-          >
-            What makes us different.
-          </motion.p>
-        </div>
-      </section>
+     {/* Hero Section */}
+{/* Hero Section */}
+<section className="relative h-[40vh] flex items-center justify-center overflow-hidden">
+  {/* Background image */}
+  <Image
+    src="/images/about-meeting1.png"
+    alt="Majestic team meeting"
+    fill
+    priority
+    className="object-cover object-center brightness-110"
+    sizes="100vw"
+  />
+
+  {/* Gradient overlay — lighter (more transparent) */}
+  <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 to-[#5c4033]/50" />
+
+  {/* Text content */}
+  <div className="relative z-10 text-center text-white px-4">
+    <motion.h1
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="text-5xl md:text-7xl font-bold mb-4"
+    >
+      ABOUT US
+    </motion.h1>
+    <motion.p
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+      className="text-xl md:text-2xl"
+    >
+      What makes us different.
+    </motion.p>
+  </div>
+</section>
+
+
 
       {/* This is Majestic Section */}
       <section className="py-20 bg-[#e8dcc8]">
