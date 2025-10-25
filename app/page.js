@@ -1,25 +1,3 @@
-// import Header from './components/Header'
-// import Hero from './components/Hero'
-// import ProductsSection from './components/ProductsSection'
-// import BrandsSection from './components/BrandsSection'
-// import AboutSection from './components/AboutSection'
-// import TestimonialsSection from './components/TestimonialsSection'
-// import Footer from './components/Footer'
-
-// export default function Home() {
-//   return (
-//     <main className="min-h-screen">
-//       <Header />
-//       <Hero />
-//       <ProductsSection />
-//       <BrandsSection />
-//       <AboutSection />
-//       <TestimonialsSection />
-//       <Footer />
-//     </main>
-//   )
-// }
-
 import dynamic from 'next/dynamic'
 import Header from './components/Header'
 
