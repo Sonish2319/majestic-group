@@ -133,7 +133,7 @@ function GallerySection({ brand, tagline, logo, route, images, index }) {
       className="mb-16"
     >
       {/* Brand Header */}
-      <div className="flex items-center justify-center mb-8">
+      <div className="flex items-center mb-8">
         <div className="text-center">
           <Link href={route} className="inline-block relative h-16 w-48 mx-auto mb-2 hover:opacity-90 transition-opacity">
             <Image
@@ -144,7 +144,7 @@ function GallerySection({ brand, tagline, logo, route, images, index }) {
               loading="lazy"
             />
           </Link>
-          {tagline && <p className="text-gray-600 text-sm">{tagline}</p>}
+          {/* {tagline && <p className="text-gray-600 text-sm">{tagline}</p>} */}
         </div>
       </div>
 
@@ -199,23 +199,25 @@ export default function GalleryPage() {
 
   {/* Text content */}
   <div className="relative z-10 text-center text-white px-4">
-    <motion.h1
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="text-5xl md:text-7xl font-bold mb-4 drop-shadow-md"
-    >
-      GALLERY
-    </motion.h1>
-    <motion.p
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.2 }}
-      className="text-lg md:text-xl drop-shadow-sm"
-    >
-      Trusted by families across Nepal
-    </motion.p>
-  </div>
+  <motion.h1
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    className="font-[Raleway] font-extrabold text-[152px] leading-[100%] tracking-[5%] mb-4 drop-shadow-md"
+  >
+    GALLERY
+  </motion.h1>
+  <motion.p
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, delay: 0.2 }}
+    className="font-[Raleway] font-light text-[32px] leading-[100%] tracking-[0%] drop-shadow-sm"
+  >
+    Trusted by families across Nepal
+  </motion.p>
+</div>
+
+
 </section>
 
 

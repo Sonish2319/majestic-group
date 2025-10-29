@@ -34,8 +34,8 @@ export default function Header() {
     return pathname.startsWith(href)
   }
 
-  const baseClasses =
-    'px-3 py-2 rounded-md transition font-medium text-sm md:text-base'
+const baseClasses =
+    'px-3 py-2 rounded-md transition opacity-100 font-[Raleway] font-normal text-sm md:text-base uppercase leading-[100%] tracking-[0%]'
 
   const activeClasses = 'bg-[#5c4033] text-white'
   const inactiveClasses = 'text-gray-700 hover:text-[#5c4033]'
@@ -54,11 +54,12 @@ export default function Header() {
           >
             {/* <h1 className="text-2xl font-bold text-gray-800">MAJESTIC GROUP</h1> */}
             <button
-    onClick={() => router.push('/')}
-    className="text-2xl font-bold text-gray-800 hover:text-[#5c4033] transition-colors"
-  >
-    MAJESTIC GROUP
-  </button>
+  onClick={() => router.push('/')}
+  className="w-[308px] h-[42px] opacity-100 font-[Raleway] font-normal text-[36px] leading-[100%] tracking-[0%] uppercase cursor-pointer"
+  style={{ transform: 'rotate(0deg)' }}
+>
+  MAJESTIC GROUP
+</button>
           </motion.div>
 
           {/* Desktop Menu */}

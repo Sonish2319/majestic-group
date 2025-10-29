@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="bg-[#663E3E] text-white relative overflow-hidden"
+      className="bg-[#9d8b73] text-white relative overflow-hidden"
       style={{
         width: '100%',
         opacity: 1,

@@ -48,7 +48,18 @@ function TestimonialCard({ testimonial, index }) {
       <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-[#5c4033] transition-all duration-500"></div>
 
       {/* Quotation Icon */}
-      <Quote className="absolute top-5 left-5 w-7 h-7 text-[#5c4033] opacity-80 group-hover:scale-110 transition-transform duration-300" />
+      <Quote
+        className="absolute"
+        style={{
+          width: '36px',
+          height: '27px',
+          transform: 'rotate(-180deg)',
+          opacity: 1,
+          top: '30px',
+          left: '20px',
+        }}
+        color="#5c4033"
+      />
 
       {/* Avatar */}
       <div className="relative w-20 h-20 rounded-full overflow-hidden mb-6 border-4 border-[#5c4033]/30 group-hover:border-[#5c4033] transition-all duration-500">
@@ -62,14 +73,15 @@ function TestimonialCard({ testimonial, index }) {
       </div>
 
       {/* Text */}
-      <p className="text-gray-800 mb-6 italic leading-relaxed max-w-[90%]">
-        "{testimonial.text}"
+      <p className="font-[Raleway] font-normal text-[20px] leading-[100%] text-center text-gray-800 mb-6">
+        {testimonial.text}
       </p>
 
       {/* Name and Location */}
       <div>
-        <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
-        <p className="text-sm text-gray-600">{testimonial.location}</p>
+        <h4 className="font-[Raleway] font-light text-[16px] leading-[100%] text-center text-gray-900">
+          {testimonial.name}, {testimonial.location}
+        </h4>
       </div>
     </motion.div>
   )
@@ -82,6 +94,7 @@ export default function TestimonialsSection() {
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
+        {/* Section Heading */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
@@ -89,12 +102,23 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <p className="text-sm text-gray-500 mb-2">| Testimonials</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-            Because trust isn't optional — it's essential.
+          <p className="font-[Raleway] font-semibold text-[24px] leading-[100%] tracking-[0%] text-[#663E3E] mb-2">
+            | Testimonials
+          </p>
+
+          {/* Line */}
+          {/* <div
+            className="mx-auto mb-4"
+            style={{ width: '60px', border: '2px solid #663E3E' }}
+          /> */}
+
+          {/* Heading */}
+          <h2 className="font-[Raleway] font-normal text-[40px] leading-[100%] tracking-[0%] text-[#434343] mt-5">
+            Because trust isn't optional it's essential.
           </h2>
         </motion.div>
 
+        {/* Testimonial Cards */}
         <div className="flex flex-wrap justify-center gap-8">
           {testimonials.map((testimonial, index) => (
             <TestimonialCard

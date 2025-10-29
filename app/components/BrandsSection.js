@@ -2,7 +2,7 @@
 
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
@@ -20,6 +20,7 @@ export default function BrandsSection() {
   const isInView = useInView(ref, { once: true })
   const router = useRouter()
   const controls = useAnimation()
+  const [hoveredIndex, setHoveredIndex] = useState(null) // Track hovered logo
 
   // Start infinite flow animation when in view
   useEffect(() => {
@@ -38,18 +39,18 @@ export default function BrandsSection() {
     }
   }, [isInView, controls])
 
-  // Navigate to brand page
   const handleBrandClick = (route) => {
     router.push(route)
   }
 
-  // Pause animation on hover
-  const handleMouseEnter = () => {
-    controls.stop()
+  const handleMouseEnterLogo = (index) => {
+    controls.stop() // Stop marquee when hovering
+    setHoveredIndex(index)
   }
 
-  // Resume animation on mouse leave
-  const handleMouseLeave = () => {
+  const handleMouseLeaveLogo = () => {
+    setHoveredIndex(null)
+    // Resume marquee
     controls.start({
       x: ['0%', '-50%'],
       transition: {
@@ -64,36 +65,44 @@ export default function BrandsSection() {
   }
 
   return (
-    <section id="brands" className="py-20 bg-[#f5e6d3] overflow-hidden">
-      <div className="container mx-auto px-4">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <p className="text-sm text-gray-500 mb-2">| Our Brands</p>
-        </motion.div>
+    <section id="brands" className="py-6 overflow-hidden">
+      <div className="container mx-auto px-12">
+      <motion.div
+  ref={ref}
+  initial={{ opacity: 0, y: 30 }}
+  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+  transition={{ duration: 0.6 }}
+  className="text-center mb-12"
+>
+  <p className="font-[Raleway] font-semibold text-[24px] leading-[100%] tracking-[0%] text-[#663E3E] mb-2">
+    | Our Brands
+  </p>
+</motion.div>
+
 
         {/* Animated flowing marquee container */}
-        <div
-          className="relative flex overflow-hidden"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
+        <div className="relative flex overflow-hidden">
           <motion.div
             animate={controls}
-            className="flex gap-12 md:gap-16 min-w-max"
+            className="flex gap-20 min-w-max"
           >
             {[...brands, ...brands].map((brand, index) => (
               <motion.div
                 key={`${brand.name}-${index}`}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative h-16 w-32 grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{
+                  opacity: isInView ? 1 : 0,
+                  scale: hoveredIndex === index ? 1.2 : 1, // Pop out hovered logo
+                  filter:
+                    hoveredIndex !== null && hoveredIndex !== index
+                      ? 'grayscale(100%) blur(2px)' // Blur and grayscale other logos
+                      : 'grayscale(0%) blur(0)',
+                }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                className="relative w-36 h-20 cursor-pointer"
                 onClick={() => handleBrandClick(brand.route)}
+                onMouseEnter={() => handleMouseEnterLogo(index)}
+                onMouseLeave={handleMouseLeaveLogo}
               >
                 <Image
                   src={brand.logo}

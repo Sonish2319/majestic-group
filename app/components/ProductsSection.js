@@ -50,9 +50,26 @@ function ProductCard({ product, index }) {
       }}
       onClick={handleClick} // Add onClick to handle navigation
     >
-      <h3 className="text-2xl font-bold mb-4 text-gray-800 text-center group-hover:text-[#5c4033] transition">
+      {/* <h3 className="text-2xl font-bold mb-4 text-gray-800 text-center group-hover:text-[#5c4033] transition">
         {product.name}
-      </h3>
+      </h3> */}
+
+      <div className="relative w-full h-16 mb-6 flex items-center justify-center">
+  <Image
+    src={`/images/home_products_logo/${product.name}.png`}
+    alt={`${product.name} logo`}
+    width={140}
+    height={42}
+    className="object-contain group-hover:scale-105 transition-transform duration-300 opacity-100"
+    style={{
+      transform: 'rotate(0deg)',
+      top: '61px',
+      left: '124.5px',
+    }}
+    priority={index < 3} // prioritize first row logos
+  />
+</div>
+
       <div className="relative h-48 mb-4">
         {!imageLoaded && (
           <div className="absolute inset-0 flex items-center justify-center">
@@ -92,10 +109,16 @@ export default function ProductsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <p className="text-sm text-gray-500 mb-2">| Our Products</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-            A curated selection of trusted brands for every home.
-          </h2>
+          <p className="font-[Raleway] font-semibold text-[24px] leading-[100%] tracking-[0%] text-[#663E3E] mb-2">
+  | Our Products
+</p>
+
+          <h2
+  className="font-[Raleway] font-normal text-[40px] leading-[100%] tracking-[0%] text-[#434343]"
+>
+  A curated selection of trusted brands for every home.
+</h2>
+
         </motion.div>
 
         {/* Responsive grid with increased row gap */}

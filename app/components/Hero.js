@@ -72,7 +72,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-lg md:text-xl mb-4"
+              className="text-lg md:text-xl mb-4 font-[Raleway] font-normal uppercase leading-[100%] tracking-[0%] opacity-100"
             >
               {slides[current].subtitle}
             </motion.p>
@@ -80,7 +80,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8"
+              className="text-4xl md:text-6xl lg:text-7xl mb-8 font-[Raleway] font-normal uppercase leading-[100%] tracking-[0%] opacity-100"
             >
               {slides[current].title}
             </motion.h2>
@@ -96,7 +96,8 @@ export default function Hero() {
   className="absolute bottom-10 right-6 md:bottom-20 md:right-10 
              text-white border-2 border-[#663E3E] rounded-[10px]
              px-4 py-2 md:px-5 md:py-3 flex items-center justify-center gap-3 
-             hover:bg-[#663E3E] hover:text-white transition w-[180px] md:w-[235px]"
+             hover:bg-[#663E3E] hover:text-white transition w-[180px] md:w-[235px]
+             font-[Raleway] font-normal uppercase leading-[100%] tracking-[0%] opacity-100"
 >
   Explore Products <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
 </motion.button>
