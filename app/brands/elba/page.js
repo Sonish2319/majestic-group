@@ -175,44 +175,80 @@ export default function ElbaPage() {
       </section>
 
       {/* Brand Story Section */}
-      <section className="py-16 bg-[#e8dcc8]">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-[#e8dcc8]">
+      <div className="container mx-auto px-4">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <p
+            className="font-[Raleway] text-[#663E3E] mb-2"
+            style={{
+              fontWeight: 600,
+              fontSize: '24px',
+              lineHeight: '100%',
+            }}
+          >
+            | Elba – Talent for Cooking Since 1950
+          </p>
+
+          <h2
+            className="font-[Raleway] text-[#434343]"
+            style={{
+              fontWeight: 400,
+              fontSize: '40px',
+              lineHeight: '100%',
+            }}
+          >
+            Italian-made appliances blending style, technology, and tradition.
+          </h2>
+        </motion.div>
+
+        {/* Image Grid (Left big + right two stacked) */}
+        <div className="flex flex-col md:flex-row justify-center items-start gap-8 mb-16">
+          {/* Left Big Image */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="relative rounded-lg overflow-hidden shadow-xl flex-shrink-0 mx-auto md:mx-0"
+            style={{
+              width: '768px',
+              height: '765px',
+            }}
           >
-            <p className="text-sm text-gray-500 mb-2">| Elba – Talent for Cooking Since 1950</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
-              Italian-made appliances blending style, technology, and tradition.
-            </h2>
+            <Image
+              src="/images/products/elba/elba-history.png"
+              alt="Elba History"
+              fill
+              className="object-cover"
+              loading="lazy"
+            />
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="relative h-80 rounded-lg overflow-hidden shadow-xl"
-            >
-              <Image
-                src="/images/products/elba/elba-history.png"
-                alt="Elba History"
-                fill
-                className="object-cover"
-                loading="lazy"
-              />
-            </motion.div>
-
+          {/* Right Column (Two stacked images) */}
+          <div
+            className="flex flex-col justify-between mx-auto md:mx-0"
+            style={{
+              width: '526px',
+            }}
+          >
+            {/* Top Image */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="relative h-80 rounded-lg overflow-hidden shadow-xl"
+              className="relative rounded-lg overflow-hidden shadow-xl"
+              style={{
+                width: '522px',
+                height: '382px',
+              }}
             >
               <Image
                 src="/images/products/elba/elba-modern.png"
@@ -222,16 +258,19 @@ export default function ElbaPage() {
                 loading="lazy"
               />
             </motion.div>
-          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="max-w-3xl mx-auto"
-          >
-            <div className="relative h-64 rounded-lg overflow-hidden shadow-xl mb-8">
+            {/* Bottom Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="relative rounded-lg overflow-hidden shadow-xl"
+              style={{
+                width: '526px',
+                height: '380px',
+              }}
+            >
               <Image
                 src="/images/products/elba/elba-75-years.png"
                 alt="75 Years of Artisan Excellence"
@@ -239,47 +278,87 @@ export default function ElbaPage() {
                 className="object-cover"
                 loading="lazy"
               />
-            </div>
-            <p className="text-gray-700 leading-relaxed text-center">
-              Founded in 1950 by Elio Baggio in Marostica, Italy, Elba has grown from a local workshop into a globally respected brand. 
-              With over 70 years of expertise, Elba continues to craft high-performance cooking appliances that reflect Italian style, 
-              precision, and passion.
-            </p>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
-      </section>
+
+        {/* Description Text */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="max-w-3xl mx-auto text-center"
+        >
+          <p className="text-gray-700 leading-relaxed font-[Raleway] text-lg">
+            Founded in 1950 by Elio Baggio in Marostica, Italy, Elba has grown
+            from a local workshop into a globally respected brand. With over 70
+            years of expertise, Elba continues to craft high-performance cooking
+            appliances that reflect Italian style, precision, and passion.
+          </p>
+        </motion.div>
+      </div>
+    </section>
 
       {/* Product Range Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
+      <section className="py-20 bg-white">
+      <div className="container mx-auto px-4">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <p
+            className="font-[Raleway]"
+            style={{
+              fontWeight: 600,
+              fontStyle: 'SemiBold',
+              fontSize: '24px',
+              lineHeight: '100%',
+              letterSpacing: '0%',
+              color: '#663E3E',
+            }}
           >
-            <p className="text-sm text-gray-500 mb-2">| Product Range Overview</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-              For Every Kitchen. Every Style
-            </h2>
-          </motion.div>
+            | Product Range Overview
+          </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {currentProducts.map((product, index) => (
-              <ProductCard key={product.model} product={product} index={index} />
-            ))}
-          </div>
+          <h2
+            className="font-[Raleway] mt-3"
+            style={{
+              fontWeight: 400,
+              fontStyle: 'Regular',
+              fontSize: '40px',
+              lineHeight: '100%',
+              letterSpacing: '0%',
+              color: '#434343',
+            }}
+          >
+            For Every Kitchen, Every Style
+          </h2>
+        </motion.div>
 
-          {totalPages > 1 && (
+        {/* Product Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 font-[Raleway]">
+          {currentProducts.map((product, index) => (
+            <ProductCard key={product.model} product={product} index={index} />
+          ))}
+        </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="mt-12 flex justify-center">
             <Pagination
               currentPage={currentPage}
               totalPages={totalPages}
               onPageChange={setCurrentPage}
             />
-          )}
-        </div>
-      </section>
+          </div>
+        )}
+      </div>
+    </section>
     </div>
   )
 }

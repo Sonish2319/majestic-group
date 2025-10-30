@@ -95,7 +95,7 @@ export default function Hero() {
   transition={{ delay: 0.6 }}
   className="absolute bottom-10 right-6 md:bottom-20 md:right-10 
              text-white border-2 border-[#663E3E] rounded-[10px]
-             px-4 py-2 md:px-5 md:py-3 flex items-center justify-center gap-3 
+             px-1 py-2 md:px-5 md:py-3 flex items-center justify-center gap-3
              hover:bg-[#663E3E] hover:text-white transition w-[180px] md:w-[235px]
              font-[Raleway] font-normal uppercase leading-[100%] tracking-[0%] opacity-100"
 >

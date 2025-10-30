@@ -135,7 +135,7 @@ function GallerySection({ brand, tagline, logo, route, images, index }) {
       {/* Brand Header */}
       <div className="flex items-center mb-8">
         <div className="text-center">
-          <Link href={route} className="inline-block relative h-16 w-48 mx-auto mb-2 hover:opacity-90 transition-opacity">
+          <Link href={route} className="inline-block relative h-25 w-[280px] mx-auto mb-2 hover:opacity-90 transition-opacity">
             <Image
               src={logo}
               alt={brand}
@@ -156,7 +156,8 @@ function GallerySection({ brand, tagline, logo, route, images, index }) {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.4, delay: idx * 0.05 }}
-            className="relative aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all cursor-pointer group"
+            // className="relative aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all cursor-pointer group"
+            className="relative w-[474px] h-[316px] overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all cursor-pointer group"
             onClick={() => setSelectedImage(image)}
           >
             <Image

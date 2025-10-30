@@ -50,24 +50,24 @@ export default function Footer() {
           viewport={{ once: true }}
           className="w-full md:w-1/3"
         >
-          <h3 className="text-xl font-bold mb-4 text-[#f5e6d3]">OUR BRANDS</h3>
+          <h3 className="text-xl font-bold mb-4 text-[#f5e6d3] font-[Raleway]">OUR BRANDS</h3>
           <div className="grid grid-cols-2 gap-4">
             <div>
               <a
                 href="http://localhost:3000/brands/elba"
-                className="block hover:text-[#f5e6d3] transition mb-2"
+                className="block hover:text-[#f5e6d3] transition mb-2 font-[Raleway]" 
               >
                 Elba
               </a>
               <a
                 href="http://localhost:3000/brands/candy"
-                className="block hover:text-[#f5e6d3] transition mb-2"
+                className="block hover:text-[#f5e6d3] transition mb-2 font-[Raleway]" 
               >
                 Candy
               </a>
               <a
                 href="http://localhost:3000/brands/elica"
-                className="block hover:text-[#f5e6d3] transition mb-2"
+                className="block hover:text-[#f5e6d3] transition mb-2 font-[Raleway]" 
               >
                 Elica
               </a>
@@ -75,19 +75,19 @@ export default function Footer() {
             <div>
               <a
                 href="http://localhost:3000/brands/sukoon"
-                className="block hover:text-[#f5e6d3] transition mb-2"
+                className="block hover:text-[#f5e6d3] transition mb-2 font-[Raleway]" 
               >
                 Sukoon
               </a>
               <a
                 href="http://localhost:3000/brands/nepakids"
-                className="block hover:text-[#f5e6d3] transition mb-2"
+                className="block hover:text-[#f5e6d3] transition mb-2 font-[Raleway]" 
               >
                 NepaKids
               </a>
               <a
                 href="http://localhost:3000/brands/bambusa"
-                className="block hover:text-[#f5e6d3] transition mb-2"
+                className="block hover:text-[#f5e6d3] transition mb-2 font-[Raleway]" 
               >
                 Bambusa
               </a>
@@ -103,12 +103,12 @@ export default function Footer() {
           viewport={{ once: true }}
           className="w-full md:w-1/3"
         >
-          <h3 className="text-2xl font-bold mb-4 text-[#f5e6d3]">MAJESTIC GROUP</h3>
-          <p className="mb-2">+977-1-4277007</p>
-          <p className="mb-4">+977-1-4277866</p>
+          <h3 className="text-2xl font-bold mb-4 text-[#f5e6d3] font-[Raleway]">MAJESTIC GROUP</h3>
+          <p className="mb-2 font-[Raleway]">+977-1-4277007</p>
+          <p className="mb-4 font-[Raleway]">+977-1-4277866</p>
           <a
             href="mailto:info@majesticgroup.com"
-            className="hover:text-[#f5e6d3] transition blo ck mb-4"
+            className="hover:text-[#f5e6d3] transition blo ck mb-4 font-[Raleway]"
           >
             info@majestic-grp.com
           </a>

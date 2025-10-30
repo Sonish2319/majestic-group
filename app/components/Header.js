@@ -55,7 +55,7 @@ const baseClasses =
             {/* <h1 className="text-2xl font-bold text-gray-800">MAJESTIC GROUP</h1> */}
             <button
   onClick={() => router.push('/')}
-  className="w-[308px] h-[42px] opacity-100 font-[Raleway] font-normal text-[36px] leading-[100%] tracking-[0%] uppercase cursor-pointer"
+  className="w-[308px] h-[42px] opacity-100 font-raleway font-normal text-[36px] leading-[100%] tracking-[0%] uppercase cursor-pointer"
   style={{ transform: 'rotate(0deg)' }}
 >
   MAJESTIC GROUP

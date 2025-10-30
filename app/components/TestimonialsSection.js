@@ -37,7 +37,7 @@ function TestimonialCard({ testimonial, index }) {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.5, delay: index * 0.2 }}
-      className="relative bg-[#f5e6d3] rounded-2xl p-8 shadow-lg transition-all overflow-hidden group text-center flex flex-col items-center justify-between"
+      className="relative bg-[#EAD4C0] rounded-2xl p-8 shadow-lg transition-all overflow-hidden group text-center flex flex-col items-center justify-between"
       style={{
         width: '413px',
         height: '419px',
