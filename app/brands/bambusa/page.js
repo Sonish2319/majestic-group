@@ -174,125 +174,97 @@ export default function BambusaPage() {
       </section>
 
       {/* Brand Story Section */}
-      <section className="py-16 bg-[#e8dcc8]">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-                      <p
-            className="font-[Raleway] text-[#663E3E] mb-2"
-            style={{
-              fontWeight: 600,
-              fontSize: '24px',
-              lineHeight: '100%',
-            }}
-          >| Bambusa – Sustainable Living</p>
-                      <h2
-            className="font-[Raleway] text-[#434343]"
-            style={{
-              fontWeight: 400,
-              fontSize: '40px',
-              lineHeight: '100%',
-            }}
-          >
-              Eco-friendly toilet paper that's soft, strong, and sustainable.
-            </h2>
-          </motion.div>
-
-<div className="flex flex-col md:flex-row justify-center items-start gap-8 mb-16">
-          {/* Left Big Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="relative rounded-lg overflow-hidden shadow-xl flex-shrink-0 mx-auto md:mx-0"
-            style={{
-              width: '768px',
-              height: '765px',
-            }}
-          >
-            <Image
-              src="/images/products/bambusa/left-first1.png"
-              alt="Elba History"
-              fill
-              className="object-cover"
-              loading="lazy"
-            />
-          </motion.div>
-
-          {/* Right Column (Two stacked images) */}
-          <div
-            className="flex flex-col justify-between mx-auto md:mx-0"
-            style={{
-              width: '526px',
-            }}
-          >
-            {/* Top Image */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="relative rounded-lg overflow-hidden mb-5 shadow-xl"
-              style={{
-                width: '522px',
-                height: '382px',
-              }}
-            >
-              <Image
-                src="/images/products/bambusa/bambusa-modern.png"
-                alt="Elba Modern Kitchen"
-                fill
-                className="object-cover"
-                loading="lazy"
-              />
-            </motion.div>
-
-            {/* Bottom Image */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="relative rounded-lg overflow-hidden shadow-xl"
-              style={{
-                width: '526px',
-                height: '360px',
-              }}
-            >
-              <Image
-                src="/images/products/bambusa/bambusa-modern1.png"
-                alt="75 Years of Artisan Excellence"
-                fill
-                className="object-cover"
-                loading="lazy"
-              />
-            </motion.div>
-          </div>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="max-w-3xl mx-auto text-center"
-        >
-          <p className="text-gray-700 leading-relaxed font-[Raleway] text-lg">
-          Bambusa is revolutionizing the toilet paper industry with 100% bamboo-based products. Bamboo grows 30 times 
-              faster than trees, making it the perfect sustainable alternative. Our toilet paper is soft, strong, and 
-              biodegradable, providing comfort while caring for the planet.
-              Made without harsh chemicals, dyes, or fragrances, Bambusa toilet paper is gentle on your skin and the 
-              environment. Join us in making a positive impact—one roll at a time.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <section className="py-12 sm:py-20 bg-[#e8dcc8]">
+              <div className="container mx-auto px-4">
+                {/* Header */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="text-center mb-10 sm:mb-16"
+                >
+                  <p className="font-[Raleway] text-[#663E3E] mb-2 text-lg sm:text-xl font-semibold">
+                  | Bambusa – Sustainable Living
+                  </p>
+                  <h2 className="font-[Raleway] text-[#434343] text-2xl sm:text-3xl md:text-[40px] font-normal">
+                  Eco-friendly toilet paper that's soft, strong, and sustainable.
+                  </h2>
+                </motion.div>
+      
+                {/* Image Layout */}
+                <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6 md:gap-8 mb-12 sm:mb-16">
+                  {/* Left Image */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                    className="relative w-full md:w-[60%] lg:w-[768px] aspect-[4/3] md:aspect-auto md:h-[765px] rounded-lg overflow-hidden shadow-xl"
+                  >
+                    <Image
+                      src="/images/products/bambusa/left-first1.png"
+                      alt="Elba History"
+                      fill
+                      className="object-cover"
+                      loading="lazy"
+                    />
+                  </motion.div>
+      
+                  {/* Right stacked images */}
+                  <div className="flex flex-col gap-5 w-full md:w-[40%] lg:w-[526px]">
+                    <motion.div
+                      initial={{ opacity: 0, x: 50 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6 }}
+                      viewport={{ once: true }}
+                      className="relative rounded-lg overflow-hidden shadow-xl aspect-[4/3] md:h-[382px]"
+                    >
+                      <Image
+                        src="/images/products/bambusa/bambusa-modern.png"
+                        alt="Elba Modern Kitchen"
+                        fill
+                        className="object-cover"
+                        loading="lazy"
+                      />
+                    </motion.div>
+      
+                    <motion.div
+                      initial={{ opacity: 0, x: 50 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: 0.2 }}
+                      viewport={{ once: true }}
+                      className="relative rounded-lg overflow-hidden shadow-xl aspect-[4/3] md:h-[360px]"
+                    >
+                      <Image
+                        src="/images/products/bambusa/bambusa-modern1.png"
+                        alt="75 Years of Artisan Excellence"
+                        fill
+                        className="object-cover"
+                        loading="lazy"
+                      />
+                    </motion.div>
+                  </div>
+                </div>
+      
+                {/* Description */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  viewport={{ once: true }}
+                  className="max-w-3xl mx-auto text-center"
+                >
+                  <p className="text-gray-700 leading-relaxed font-[Raleway] text-base sm:text-lg">
+                  Bambusa is revolutionizing the toilet paper industry with 100% bamboo-based products. Bamboo grows 30 times 
+      faster than trees, making it the perfect sustainable alternative. Our toilet paper is soft, strong, and 
+      biodegradable, providing comfort while caring for the planet.
+      Made without harsh chemicals, dyes, or fragrances, Bambusa toilet paper is gentle on your skin and the 
+      environment. Join us in making a positive impact—one roll at a time.
+                  </p>
+                </motion.div>
+              </div>
+            </section>
 
       {/* Product Range Section */}
       <section className="py-16 bg-white">

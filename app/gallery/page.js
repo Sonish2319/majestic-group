@@ -130,12 +130,15 @@ function GallerySection({ brand, tagline, logo, route, images, index }) {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="mb-16"
+      className="mb-12 sm:mb-16"
     >
       {/* Brand Header */}
-      <div className="flex items-center mb-8">
+      <div className="flex items-center justify-center mb-8">
         <div className="text-center">
-          <Link href={route} className="inline-block relative h-25 w-[280px] mx-auto mb-2 hover:opacity-90 transition-opacity">
+          <Link
+            href={route}
+            className="inline-block relative w-[180px] sm:w-[220px] md:w-[280px] h-[60px] sm:h-[80px] md:h-[100px] mx-auto mb-2 hover:opacity-90 transition-opacity"
+          >
             <Image
               src={logo}
               alt={brand}
@@ -144,20 +147,18 @@ function GallerySection({ brand, tagline, logo, route, images, index }) {
               loading="lazy"
             />
           </Link>
-          {/* {tagline && <p className="text-gray-600 text-sm">{tagline}</p>} */}
         </div>
       </div>
 
       {/* Image Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
         {images.map((image, idx) => (
           <motion.div
             key={idx}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.4, delay: idx * 0.05 }}
-            // className="relative aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all cursor-pointer group"
-            className="relative w-[474px] h-[316px] overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all cursor-pointer group"
+            className="relative w-full aspect-[3/2] overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all cursor-pointer group"
             onClick={() => setSelectedImage(image)}
           >
             <Image
@@ -166,7 +167,7 @@ function GallerySection({ brand, tagline, logo, route, images, index }) {
               fill
               className="object-cover group-hover:scale-110 transition-transform duration-300"
               loading="lazy"
-              sizes="(max-width: 768px) 50vw, 33vw"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
           </motion.div>
@@ -184,46 +185,43 @@ export default function GalleryPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-<section className="relative h-[40vh] flex items-center justify-center overflow-hidden">
-  {/* Background image */}
-  <Image
-    src="/images/about-meeting1.png" 
-    alt="Gallery background"
-    fill
-    priority
-    className="object-cover object-center brightness-115 contrast-105"
-    sizes="100vw"
-  />
+      <section className="relative h-[30vh] sm:h-[40vh] flex items-center justify-center overflow-hidden">
+        {/* Background image */}
+        <Image
+          src="/images/about-meeting1.png"
+          alt="Gallery background"
+          fill
+          priority
+          className="object-cover object-center brightness-115 contrast-105"
+          sizes="100vw"
+        />
 
-  {/* Gradient overlay — lighter, so background is more visible */}
-  <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 to-[#5c4033]/50" />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 to-[#5c4033]/50" />
 
-  {/* Text content */}
-  <div className="relative z-10 text-center text-white px-4">
-  <motion.h1
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8 }}
-    className="font-[Raleway] font-extrabold text-[152px] leading-[100%] tracking-[5%] mb-4 drop-shadow-md"
-  >
-    GALLERY
-  </motion.h1>
-  <motion.p
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8, delay: 0.2 }}
-    className="font-[Raleway] font-light text-[32px] leading-[100%] tracking-[0%] drop-shadow-sm"
-  >
-    Trusted by families across Nepal
-  </motion.p>
-</div>
-
-
-</section>
-
+        {/* Text content */}
+        <div className="relative z-10 text-center text-white px-4">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="font-[Raleway] font-extrabold text-[48px] sm:text-[72px] md:text-[112px] lg:text-[152px] leading-[100%] tracking-[5%] mb-2 sm:mb-4 drop-shadow-md"
+          >
+            GALLERY
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="font-[Raleway] font-light text-[16px] sm:text-[20px] md:text-[28px] lg:text-[32px] leading-[100%] tracking-[0%] drop-shadow-sm"
+          >
+            Trusted by families across Nepal
+          </motion.p>
+        </div>
+      </section>
 
       {/* Gallery Sections */}
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-3 sm:px-6 md:px-8 lg:px-12 py-10 sm:py-16">
         {galleryData.map((section, index) => (
           <GallerySection
             key={section.brand}

@@ -175,118 +175,89 @@ export default function ElicaPage() {
       </section>
 
       {/* Brand Story Section */}
-      <section className="py-16 bg-[#eaf0ee]">
+      <section className="py-12 sm:py-20 bg-[#e8dcc8]">
         <div className="container mx-auto px-4">
+          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-10 sm:mb-16"
           >
-          <p
-            className="font-[Raleway] text-[#663E3E] mb-2"
-            style={{
-              fontWeight: 600,
-              fontSize: '24px',
-              lineHeight: '100%',
-            }}
-          >| Elica – Innovation in the Kitchen</p>
-                      <h2
-            className="font-[Raleway] text-[#434343]"
-            style={{
-              fontWeight: 400,
-              fontSize: '40px',
-              lineHeight: '100%',
-            }}
-          >
-              Elegant design, powerful performance — kitchen solutions for modern homes.
+            <p className="font-[Raleway] text-[#663E3E] mb-2 text-lg sm:text-xl font-semibold">
+            | Elica – Innovation in the Kitchen
+            </p>
+            <h2 className="font-[Raleway] text-[#434343] text-2xl sm:text-3xl md:text-[40px] font-normal">
+            Elegant design, powerful performance — kitchen solutions for modern homes.
             </h2>
           </motion.div>
 
-{/* Image Grid (Left big + right two stacked) */}
-        <div className="flex flex-col md:flex-row justify-center items-start gap-8 mb-16">
-          {/* Left Big Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="relative rounded-lg overflow-hidden shadow-xl flex-shrink-0 mx-auto md:mx-0"
-            style={{
-              width: '768px',
-              height: '765px',
-            }}
-          >
-            <Image
-              src="/images/products/elica/elica-left.png"
-              alt="Elba History"
-              fill
-              className="object-cover"
-              loading="lazy"
-            />
-          </motion.div>
-
-          {/* Right Column (Two stacked images) */}
-          <div
-            className="flex flex-col justify-between mx-auto md:mx-0"
-            style={{
-              width: '526px',
-            }}
-          >
-            {/* Top Image */}
+          {/* Image Layout */}
+          <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6 md:gap-8 mb-12 sm:mb-16">
+            {/* Left Image */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="relative rounded-lg overflow-hidden mb-5 shadow-xl"
-              style={{
-                width: '522px',
-                height: '382px',
-              }}
+              className="relative w-full md:w-[60%] lg:w-[768px] aspect-[4/3] md:aspect-auto md:h-[765px] rounded-lg overflow-hidden shadow-xl"
             >
               <Image
-                src="/images/products/elba/elba-modern.png"
-                alt="Elba Modern Kitchen"
+                src="/images/products/elica/elica-left.png"
+                alt="Elba History"
                 fill
                 className="object-cover"
                 loading="lazy"
               />
             </motion.div>
 
-            {/* Bottom Image */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="relative rounded-lg overflow-hidden shadow-xl"
-              style={{
-                width: '526px',
-                height: '360px',
-              }}
-            >
-              <Image
-                src="/images/products/elica/elica-75-years.png"
-                alt="75 Years of Artisan Excellence"
-                fill
-                className="object-cover"
-                loading="lazy"
-              />
-            </motion.div>
+            {/* Right stacked images */}
+            <div className="flex flex-col gap-5 w-full md:w-[40%] lg:w-[526px]">
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="relative rounded-lg overflow-hidden shadow-xl aspect-[4/3] md:h-[382px]"
+              >
+                <Image
+                  src="/images/products/elba/elba-modern.png"
+                  alt="Elba Modern Kitchen"
+                  fill
+                  className="object-cover"
+                  loading="lazy"
+                />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="relative rounded-lg overflow-hidden shadow-xl aspect-[4/3] md:h-[360px]"
+              >
+                <Image
+                  src="/images/products/elba/elba-75-years.png"
+                  alt="75 Years of Artisan Excellence"
+                  fill
+                  className="object-cover"
+                  loading="lazy"
+                />
+              </motion.div>
+            </div>
           </div>
-        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="max-w-3xl mx-auto text-center"
-        >
-          <p className="text-gray-700 leading-relaxed font-[Raleway] text-lg">
-              Elica brings decades of experience in kitchen appliances — focusing on aerodynamic design, quiet performance, and
+          {/* Description */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <p className="text-gray-700 leading-relaxed font-[Raleway] text-base sm:text-lg">
+            Elica brings decades of experience in kitchen appliances — focusing on aerodynamic design, quiet performance, and
               superior extraction power. Every product we build balances aesthetics with efficiency so your kitchen performs as beautifully as it looks.
               From hobs to chimneys and built-in systems, Elica products are engineered for reliability, easy maintenance, and energy-conscious operation.
             </p>
@@ -294,7 +265,6 @@ export default function ElicaPage() {
         </div>
       </section>
 
-      {/* Product Range Section */}
       {/* Product Range Section */}
       <section className="py-20 bg-white">
       <div className="container mx-auto px-4">

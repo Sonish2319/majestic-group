@@ -73,9 +73,9 @@ function ProductCard({ product, index }) {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.5, delay: index * 0.05 }}
-      className="bg-[#f5e6d3] rounded-lg p-6 hover:shadow-xl transition-all group"
+      className="bg-[#f5e6d3] rounded-lg p-5 sm:p-6 hover:shadow-xl transition-all group"
     >
-      <div className="relative h-64 mb-4 overflow-hidden rounded-lg">
+      <div className="relative h-48 sm:h-60 md:h-64 mb-4 overflow-hidden rounded-lg">
         <Image
           src={product.image}
           alt={product.name}
@@ -84,16 +84,20 @@ function ProductCard({ product, index }) {
           loading="lazy"
         />
       </div>
-      <h3 className="text-xl font-bold text-gray-800 mb-1 font-[Raleway]">{product.name}</h3>
+      <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-1 font-[Raleway]">
+        {product.name}
+      </h3>
       <p className="text-sm text-gray-600 mb-1 font-[Raleway]">{product.model}</p>
-      <p className="text-sm text-[#5c4033] font-semibold font-[Raleway]">{product.type}</p>
+      <p className="text-sm text-[#5c4033] font-semibold font-[Raleway]">
+        {product.type}
+      </p>
     </motion.div>
   )
 }
 
 function Pagination({ currentPage, totalPages, onPageChange }) {
   return (
-    <div className="flex items-center justify-center gap-4 mt-12">
+    <div className="flex items-center justify-center gap-3 sm:gap-4 mt-10 sm:mt-12">
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
@@ -101,13 +105,13 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
-      
-      <div className="flex gap-2">
+
+      <div className="flex gap-2 sm:gap-3">
         {[...Array(totalPages)].map((_, idx) => (
           <button
             key={idx}
             onClick={() => onPageChange(idx + 1)}
-            className={`w-10 h-10 rounded-full transition ${
+            className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full transition ${
               currentPage === idx + 1
                 ? 'bg-[#5c4033] text-white'
                 : 'bg-gray-200 hover:bg-gray-300'
@@ -140,8 +144,8 @@ export default function ElbaPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section with Background */}
-      <section className="relative h-[50vh] overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative h-[40vh] sm:h-[50vh] overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="/images/products/elba/elba-hero-bg.png"
@@ -152,7 +156,7 @@ export default function ElbaPage() {
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30" />
-        
+
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -160,205 +164,145 @@ export default function ElbaPage() {
             transition={{ duration: 0.8 }}
             className="text-white"
           >
-            <div className="mb-6">
+            <div className="mb-4 sm:mb-6">
               <Image
                 src="/images/products/elba/elba-logo-white.png"
                 alt="Elba"
-                width={200}
-                height={80}
+                width={160}
+                height={70}
                 className="mb-4"
               />
             </div>
-            {/* <p className="text-2xl md:text-3xl font-light">Italian Taste Experience</p> */}
           </motion.div>
         </div>
       </section>
 
       {/* Brand Story Section */}
-      <section className="py-20 bg-[#e8dcc8]">
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <p
-            className="font-[Raleway] text-[#663E3E] mb-2"
-            style={{
-              fontWeight: 600,
-              fontSize: '24px',
-              lineHeight: '100%',
-            }}
-          >
-            | Elba – Talent for Cooking Since 1950
-          </p>
-
-          <h2
-            className="font-[Raleway] text-[#434343]"
-            style={{
-              fontWeight: 400,
-              fontSize: '40px',
-              lineHeight: '100%',
-            }}
-          >
-            Italian-made appliances blending style, technology, and tradition.
-          </h2>
-        </motion.div>
-
-        {/* Image Grid (Left big + right two stacked) */}
-        <div className="flex flex-col md:flex-row justify-center items-start gap-8 mb-16">
-          {/* Left Big Image */}
+      <section className="py-12 sm:py-20 bg-[#e8dcc8]">
+        <div className="container mx-auto px-4">
+          {/* Header */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="relative rounded-lg overflow-hidden shadow-xl flex-shrink-0 mx-auto md:mx-0"
-            style={{
-              width: '768px',
-              height: '765px',
-            }}
+            className="text-center mb-10 sm:mb-16"
           >
-            <Image
-              src="/images/products/elba/elba-history.png"
-              alt="Elba History"
-              fill
-              className="object-cover"
-              loading="lazy"
-            />
+            <p className="font-[Raleway] text-[#663E3E] mb-2 text-lg sm:text-xl font-semibold">
+              | Elba – Talent for Cooking Since 1950
+            </p>
+            <h2 className="font-[Raleway] text-[#434343] text-2xl sm:text-3xl md:text-[40px] font-normal">
+              Italian-made appliances blending style, technology, and tradition.
+            </h2>
           </motion.div>
 
-          {/* Right Column (Two stacked images) */}
-          <div
-            className="flex flex-col justify-between mx-auto md:mx-0"
-            style={{
-              width: '526px',
-            }}
-          >
-            {/* Top Image */}
+          {/* Image Layout */}
+          <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6 md:gap-8 mb-12 sm:mb-16">
+            {/* Left Image */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="relative rounded-lg overflow-hidden mb-5 shadow-xl"
-              style={{
-                width: '522px',
-                height: '382px',
-              }}
+              className="relative w-full md:w-[60%] lg:w-[768px] aspect-[4/3] md:aspect-auto md:h-[765px] rounded-lg overflow-hidden shadow-xl"
             >
               <Image
-                src="/images/products/elba/elba-modern.png"
-                alt="Elba Modern Kitchen"
+                src="/images/products/elba/elba-history.png"
+                alt="Elba History"
                 fill
                 className="object-cover"
                 loading="lazy"
               />
             </motion.div>
 
-            {/* Bottom Image */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="relative rounded-lg overflow-hidden shadow-xl"
-              style={{
-                width: '526px',
-                height: '360px',
-              }}
-            >
-              <Image
-                src="/images/products/elba/elba-75-years.png"
-                alt="75 Years of Artisan Excellence"
-                fill
-                className="object-cover"
-                loading="lazy"
-              />
-            </motion.div>
+            {/* Right stacked images */}
+            <div className="flex flex-col gap-5 w-full md:w-[40%] lg:w-[526px]">
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="relative rounded-lg overflow-hidden shadow-xl aspect-[4/3] md:h-[382px]"
+              >
+                <Image
+                  src="/images/products/elba/elba-modern.png"
+                  alt="Elba Modern Kitchen"
+                  fill
+                  className="object-cover"
+                  loading="lazy"
+                />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="relative rounded-lg overflow-hidden shadow-xl aspect-[4/3] md:h-[360px]"
+              >
+                <Image
+                  src="/images/products/elba/elba-75-years.png"
+                  alt="75 Years of Artisan Excellence"
+                  fill
+                  className="object-cover"
+                  loading="lazy"
+                />
+              </motion.div>
+            </div>
           </div>
-        </div>
 
-        {/* Description Text */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="max-w-3xl mx-auto text-center"
-        >
-          <p className="text-gray-700 leading-relaxed font-[Raleway] text-lg">
-            Founded in 1950 by Elio Baggio in Marostica, Italy, Elba has grown
-            from a local workshop into a globally respected brand. With over 70
-            years of expertise, Elba continues to craft high-performance cooking
-            appliances that reflect Italian style, precision, and passion.
-          </p>
-        </motion.div>
-      </div>
-    </section>
-
-      {/* Product Range Section */}
-      <section className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <p
-            className="font-[Raleway]"
-            style={{
-              fontWeight: 600,
-              fontStyle: 'SemiBold',
-              fontSize: '24px',
-              lineHeight: '100%',
-              letterSpacing: '0%',
-              color: '#663E3E',
-            }}
+          {/* Description */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center"
           >
-            | Product Range Overview
-          </p>
-
-          <h2
-            className="font-[Raleway] mt-3"
-            style={{
-              fontWeight: 400,
-              fontStyle: 'Regular',
-              fontSize: '40px',
-              lineHeight: '100%',
-              letterSpacing: '0%',
-              color: '#434343',
-            }}
-          >
-            For Every Kitchen, Every Style
-          </h2>
-        </motion.div>
-
-        {/* Product Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 font-[Raleway]">
-          {currentProducts.map((product, index) => (
-            <ProductCard key={product.model} product={product} index={index} />
-          ))}
+            <p className="text-gray-700 leading-relaxed font-[Raleway] text-base sm:text-lg">
+              Founded in 1950 by Elio Baggio in Marostica, Italy, Elba has grown
+              from a local workshop into a globally respected brand. With over 70
+              years of expertise, Elba continues to craft high-performance
+              cooking appliances that reflect Italian style, precision, and
+              passion.
+            </p>
+          </motion.div>
         </div>
+      </section>
 
-        {/* Pagination */}
-        {totalPages > 1 && (
-          <div className="mt-12 flex justify-center">
+      {/* Product Range */}
+      <section className="py-12 sm:py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-10 sm:mb-16"
+          >
+            <p className="font-[Raleway] font-semibold text-lg sm:text-2xl text-[#663E3E]">
+              | Product Range Overview
+            </p>
+            <h2 className="font-[Raleway] mt-2 sm:mt-3 text-2xl sm:text-3xl md:text-[40px] text-[#434343]">
+              For Every Kitchen, Every Style
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {currentProducts.map((product, index) => (
+              <ProductCard key={product.model} product={product} index={index} />
+            ))}
+          </div>
+
+          {totalPages > 1 && (
             <Pagination
               currentPage={currentPage}
               totalPages={totalPages}
               onPageChange={setCurrentPage}
             />
-          </div>
-        )}
-      </div>
-    </section>
+          )}
+        </div>
+      </section>
     </div>
   )
 }
