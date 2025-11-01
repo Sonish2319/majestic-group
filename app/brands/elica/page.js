@@ -11,50 +11,56 @@ const products = [
     name: 'Elica Chimney',
     model: 'Wall Mounted 90cm',
     type: 'Kitchen Hood',
-    image: '/images/products/elica/chimney-wall-90.jpg',
+    image: '/images/products/elica/chimney-wall-90.png',
   },
   {
     name: 'Elica Hob',
     model: 'Gas 4 Burner',
     type: 'Cooktop',
-    image: '/images/products/elica/hob-gas-4.jpg',
+    image: '/images/products/elica/hob-gas-4.png',
   },
   {
     name: 'Elica Chimney',
     model: 'Island 90cm',
     type: 'Kitchen Hood',
-    image: '/images/products/elica/chimney-island.jpg',
+    image: '/images/products/elica/chimney-island.png',
   },
   {
     name: 'Elica Hob',
     model: 'Induction 4 Zone',
     type: 'Cooktop',
-    image: '/images/products/elica/hob-induction.jpg',
+    image: '/images/products/elica/hob-induction.png',
   },
   {
     name: 'Elica Chimney',
     model: 'Curved Glass 60cm',
     type: 'Kitchen Hood',
-    image: '/images/products/elica/chimney-curved.jpg',
+    image: '/images/products/elica/chimney-curved.png',
   },
   {
     name: 'Elica Built-in Hob',
     model: 'Gas 3 Burner',
     type: 'Cooktop',
-    image: '/images/products/elica/hob-builtin.jpg',
+    image: '/images/products/elica/hob-builtin.png',
   },
   // optional extras to show pagination working
   {
     name: 'Elica Chimney',
     model: 'Designer 120cm',
     type: 'Kitchen Hood',
-    image: '/images/products/elica/chimney-designer.jpg',
+    image: '/images/products/elica/chimney-island.png',
   },
   {
     name: 'Elica Hob',
     model: 'Ceramic 2 Zone',
     type: 'Cooktop',
-    image: '/images/products/elica/hob-ceramic-2.jpg',
+    image: '/images/products/elica/hob-ceramic-2.png',
+  },
+  {
+    name: 'Elica Hob',
+    model: 'Ceramic 2 Zone new',
+    type: 'Cooktop',
+    image: '/images/products/elica/hob-ceramic-3.png',
   },
 ]
 
@@ -126,7 +132,7 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
 
 export default function ElicaPage() {
   const [currentPage, setCurrentPage] = useState(1)
-  const productsPerPage = 6
+  const productsPerPage = 9
   const totalPages = Math.ceil(products.length / productsPerPage)
 
   const indexOfLastProduct = currentPage * productsPerPage
@@ -139,7 +145,7 @@ export default function ElicaPage() {
       <section className="relative h-[50vh] overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/brands/elica-hero-bg.jpg"
+            src="/images/products/elica/elica-hero-bg.png"
             alt="Elica Kitchen Solutions"
             fill
             className="object-cover brightness-90"
@@ -157,14 +163,13 @@ export default function ElicaPage() {
           >
             <div className="mb-6">
               <Image
-                src="/images/elica-logo-white.png"
+                src="/images/elica-logo.png"
                 alt="Elica"
                 width={250}
                 height={100}
                 className="mb-4"
               />
             </div>
-            <p className="text-2xl md:text-3xl font-light">Cook with Confidence</p>
           </motion.div>
         </div>
       </section>
@@ -179,58 +184,110 @@ export default function ElicaPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <p className="text-sm text-gray-500 mb-2">| Elica – Innovation in the Kitchen</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+          <p
+            className="font-[Raleway] text-[#663E3E] mb-2"
+            style={{
+              fontWeight: 600,
+              fontSize: '24px',
+              lineHeight: '100%',
+            }}
+          >| Elica – Innovation in the Kitchen</p>
+                      <h2
+            className="font-[Raleway] text-[#434343]"
+            style={{
+              fontWeight: 400,
+              fontSize: '40px',
+              lineHeight: '100%',
+            }}
+          >
               Elegant design, powerful performance — kitchen solutions for modern homes.
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+{/* Image Grid (Left big + right two stacked) */}
+        <div className="flex flex-col md:flex-row justify-center items-start gap-8 mb-16">
+          {/* Left Big Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="relative rounded-lg overflow-hidden shadow-xl flex-shrink-0 mx-auto md:mx-0"
+            style={{
+              width: '768px',
+              height: '765px',
+            }}
+          >
+            <Image
+              src="/images/products/elica/elica-left.png"
+              alt="Elba History"
+              fill
+              className="object-cover"
+              loading="lazy"
+            />
+          </motion.div>
+
+          {/* Right Column (Two stacked images) */}
+          <div
+            className="flex flex-col justify-between mx-auto md:mx-0"
+            style={{
+              width: '526px',
+            }}
+          >
+            {/* Top Image */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="relative h-80 rounded-lg overflow-hidden shadow-xl"
+              className="relative rounded-lg overflow-hidden mb-5 shadow-xl"
+              style={{
+                width: '522px',
+                height: '382px',
+              }}
             >
               <Image
-                src="/images/brands/elica-ad-1.jpg"
-                alt="Elica Performance"
+                src="/images/products/elba/elba-modern.png"
+                alt="Elba Modern Kitchen"
                 fill
                 className="object-cover"
                 loading="lazy"
               />
             </motion.div>
 
+            {/* Bottom Image */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="relative h-80 rounded-lg overflow-hidden shadow-xl"
+              className="relative rounded-lg overflow-hidden shadow-xl"
+              style={{
+                width: '526px',
+                height: '360px',
+              }}
             >
               <Image
-                src="/images/brands/elica-ad-2.jpg"
-                alt="Elica Design"
+                src="/images/products/elica/elica-75-years.png"
+                alt="75 Years of Artisan Excellence"
                 fill
                 className="object-cover"
                 loading="lazy"
               />
             </motion.div>
           </div>
+        </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <p className="text-gray-700 leading-relaxed mb-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="max-w-3xl mx-auto text-center"
+        >
+          <p className="text-gray-700 leading-relaxed font-[Raleway] text-lg">
               Elica brings decades of experience in kitchen appliances — focusing on aerodynamic design, quiet performance, and
               superior extraction power. Every product we build balances aesthetics with efficiency so your kitchen performs as beautifully as it looks.
-            </p>
-            <p className="text-gray-700 leading-relaxed">
               From hobs to chimneys and built-in systems, Elica products are engineered for reliability, easy maintenance, and energy-conscious operation.
             </p>
           </motion.div>
@@ -238,40 +295,65 @@ export default function ElicaPage() {
       </section>
 
       {/* Product Range Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
+      {/* Product Range Section */}
+      <section className="py-20 bg-white">
+      <div className="container mx-auto px-4">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <p
+            className="font-[Raleway]"
+            style={{
+              fontWeight: 600,
+              fontStyle: 'SemiBold',
+              fontSize: '24px',
+              lineHeight: '100%',
+              letterSpacing: '0%',
+              color: '#663E3E',
+            }}
           >
-            <p className="text-sm text-gray-500 mb-2">| Product Range Overview</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-              Advanced kitchen appliances built to last
-            </h2>
-          </motion.div>
+            | Product Range Overview
+          </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {currentProducts.map((product, index) => (
-              <ProductCard key={`${product.model}-${index}`} product={product} index={index} />
-            ))}
-          </div>
+          <h2
+            className="font-[Raleway] mt-3"
+            style={{
+              fontWeight: 400,
+              fontStyle: 'Regular',
+              fontSize: '40px',
+              lineHeight: '100%',
+              letterSpacing: '0%',
+              color: '#434343',
+            }}
+          >
+            For Every Kitchen, Every Style
+          </h2>
+        </motion.div>
 
-          {totalPages > 1 && (
+        {/* Product Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 font-[Raleway]">
+          {currentProducts.map((product, index) => (
+            <ProductCard key={product.model} product={product} index={index} />
+          ))}
+        </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="mt-12 flex justify-center">
             <Pagination
               currentPage={currentPage}
               totalPages={totalPages}
-              onPageChange={(page) => {
-                if (page < 1 || page > totalPages) return
-                setCurrentPage(page)
-                window.scrollTo({ top: 0, behavior: 'smooth' })
-              }}
+              onPageChange={setCurrentPage}
             />
-          )}
-        </div>
-      </section>
+          </div>
+        )}
+      </div>
+    </section>
 
       {/* Features Section */}
       <section className="py-16 bg-[#f7faf9]">
@@ -299,8 +381,8 @@ export default function ElicaPage() {
               <div className="w-16 h-16 bg-[#5c4033] rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-3xl text-white">⚙️</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">Powerful Extraction</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold text-gray-800 mb-3 font-[Raleway]">Powerful Extraction</h3>
+              <p className="text-gray-600 font-[Raleway]">
                 High performance motors ensure fast and efficient removal of cooking fumes and odors.
               </p>
             </motion.div>
@@ -315,8 +397,8 @@ export default function ElicaPage() {
               <div className="w-16 h-16 bg-[#5c4033] rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-3xl text-white">🎛️</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">Smart Controls</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold text-gray-800 mb-3 font-[Raleway]">Smart Controls</h3>
+              <p className="text-gray-600 font-[Raleway]">
                 Intuitive control panels and multiple speed settings for personalized cooking experiences.
               </p>
             </motion.div>
@@ -331,8 +413,8 @@ export default function ElicaPage() {
               <div className="w-16 h-16 bg-[#5c4033] rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-3xl text-white">🛡️</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">Durable Build</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold text-gray-800 mb-3 font-[Raleway]">Durable Build</h3>
+              <p className="text-gray-600 font-[Raleway]">
                 Built with premium materials for longevity and low-maintenance operation.
               </p>
             </motion.div>

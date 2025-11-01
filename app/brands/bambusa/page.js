@@ -2,27 +2,64 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import Image from 'next/image'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const products = [
   {
-    name: 'Bambusa Toilet Paper',
-    variant: '2-Ply Premium',
-    pack: '12 Rolls',
-    image: '/images/products/bambusa/toilet-paper-12.jpg',
+    name: 'Washing Machine',
+    model: 'Front Load 8kg',
+    type: 'Laundry',
+    image: '/images/products/bambusa/washer-front-load.png',
   },
   {
-    name: 'Bambusa Toilet Paper',
-    variant: '3-Ply Ultra Soft',
-    pack: '6 Rolls',
-    image: '/images/products/bambusa/toilet-paper-6.jpg',
+    name: 'Washing Machine',
+    model: 'Top Load 7kg',
+    type: 'Laundry',
+    image: '/images/products/bambusa/washer-top-load.png',
   },
   {
-    name: 'Bambusa Toilet Paper',
-    variant: 'Eco-Friendly',
-    pack: '24 Rolls',
-    image: '/images/products/bambusa/toilet-paper-24.jpg',
+    name: 'Refrigerator',
+    model: 'Double Door',
+    type: 'Cooling',
+    image: '/images/products/bambusa/refrigerator.png',
+  },
+  {
+    name: 'Dishwasher',
+    model: 'Built-in',
+    type: 'Kitchen',
+    image: '/images/products/bambusa/dishwasher.png',
+  },
+  {
+    name: 'Oven',
+    model: 'Built-in Electric',
+    type: 'Kitchen',
+    image: '/images/products/bambusa/oven.png',
+  },
+  {
+    name: 'Microwave',
+    model: 'Convection',
+    type: 'Kitchen',
+    image: '/images/products/bambusa/microwave.png',
+  },
+  {
+    name: 'Cooktop',
+    model: 'Gas 4 Burner',
+    type: 'Kitchen',
+    image: '/images/products/bambusa/cooktop.png',
+  },
+  {
+    name: 'Dryer',
+    model: 'Heat Pump',
+    type: 'Laundry',
+    image: '/images/products/bambusa/dryer.png',
+  },
+  {
+    name: 'Washing Machine',
+    model: 'Front Load 9kg',
+    type: 'Laundry',
+    image: '/images/products/bambusa/microwave.png',
   },
 ]
 
@@ -35,10 +72,10 @@ function ProductCard({ product, index }) {
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-[#f5e6d3] rounded-lg p-8 hover:shadow-xl transition-all group"
+      transition={{ duration: 0.5, delay: index * 0.05 }}
+      className="bg-[#f5e6d3] rounded-lg p-6 hover:shadow-xl transition-all group"
     >
-      <div className="relative h-72 mb-4 overflow-hidden rounded-lg">
+      <div className="relative h-64 mb-4 overflow-hidden rounded-lg">
         <Image
           src={product.image}
           alt={product.name}
@@ -47,28 +84,74 @@ function ProductCard({ product, index }) {
           loading="lazy"
         />
       </div>
-      <h3 className="text-xl font-bold text-gray-800 mb-1 text-center">{product.name}</h3>
-      <p className="text-lg text-gray-600 mb-1 text-center">{product.variant}</p>
-      <p className="text-sm text-[#5c4033] font-semibold text-center">{product.pack}</p>
+      <h3 className="text-xl font-bold text-gray-800 mb-1 font-[Raleway]">{product.name}</h3>
+      <p className="text-sm text-gray-600 mb-1 font-[Raleway]">{product.model}</p>
+      <p className="text-sm text-[#5c4033] font-semibold font-[Raleway]">{product.type}</p>
     </motion.div>
   )
 }
 
+function Pagination({ currentPage, totalPages, onPageChange }) {
+  return (
+    <div className="flex items-center justify-center gap-4 mt-12">
+      <button
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+        className="p-2 rounded-full hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed transition"
+      >
+        <ChevronLeft className="w-6 h-6" />
+      </button>
+      
+      <div className="flex gap-2">
+        {[...Array(totalPages)].map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => onPageChange(idx + 1)}
+            className={`w-10 h-10 rounded-full transition ${
+              currentPage === idx + 1
+                ? 'bg-[#5c4033] text-white'
+                : 'bg-gray-200 hover:bg-gray-300'
+            }`}
+          >
+            {idx + 1}
+          </button>
+        ))}
+      </div>
+
+      <button
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        className="p-2 rounded-full hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed transition"
+      >
+        <ChevronRight className="w-6 h-6" />
+      </button>
+    </div>
+  )
+}
+
 export default function BambusaPage() {
+  const [currentPage, setCurrentPage] = useState(1)
+  const productsPerPage = 9
+  const totalPages = Math.ceil(products.length / productsPerPage)
+
+  const indexOfLastProduct = currentPage * productsPerPage
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage
+  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct)
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section with Background */}
       <section className="relative h-[50vh] overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/brands/bambusa-hero-bg.jpg"
-            alt="Bambusa Eco-Friendly"
+            src="/images/products/bambusa/bambusa-hero-bg1.png"
+            alt="Candy Appliances"
             fill
-            className="object-cover brightness-90"
+            className="object-cover brightness-75"
             priority
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-green-900/50 to-green-700/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30" />
         
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center">
           <motion.div
@@ -79,14 +162,13 @@ export default function BambusaPage() {
           >
             <div className="mb-6">
               <Image
-                src="/images/bambusa-logo-white.png"
-                alt="Bambusa"
-                width={250}
-                height={100}
+                src="/images/bambusa-logo.png"
+                alt="Candy"
+                width={200}
+                height={80}
                 className="mb-4"
               />
             </div>
-            <p className="text-2xl md:text-3xl font-light">Tree Free. Guilt Free.</p>
           </motion.div>
         </div>
       </section>
@@ -101,59 +183,110 @@ export default function BambusaPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <p className="text-sm text-gray-500 mb-2">| Bambusa – Sustainable Living</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                      <p
+            className="font-[Raleway] text-[#663E3E] mb-2"
+            style={{
+              fontWeight: 600,
+              fontSize: '24px',
+              lineHeight: '100%',
+            }}
+          >| Bambusa – Sustainable Living</p>
+                      <h2
+            className="font-[Raleway] text-[#434343]"
+            style={{
+              fontWeight: 400,
+              fontSize: '40px',
+              lineHeight: '100%',
+            }}
+          >
               Eco-friendly toilet paper that's soft, strong, and sustainable.
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+<div className="flex flex-col md:flex-row justify-center items-start gap-8 mb-16">
+          {/* Left Big Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="relative rounded-lg overflow-hidden shadow-xl flex-shrink-0 mx-auto md:mx-0"
+            style={{
+              width: '768px',
+              height: '765px',
+            }}
+          >
+            <Image
+              src="/images/products/bambusa/left-first1.png"
+              alt="Elba History"
+              fill
+              className="object-cover"
+              loading="lazy"
+            />
+          </motion.div>
+
+          {/* Right Column (Two stacked images) */}
+          <div
+            className="flex flex-col justify-between mx-auto md:mx-0"
+            style={{
+              width: '526px',
+            }}
+          >
+            {/* Top Image */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="relative h-80 rounded-lg overflow-hidden shadow-xl"
+              className="relative rounded-lg overflow-hidden mb-5 shadow-xl"
+              style={{
+                width: '522px',
+                height: '382px',
+              }}
             >
               <Image
-                src="/images/brands/bambusa-ad-1.jpg"
-                alt="Bambusa Tree Free"
+                src="/images/products/bambusa/bambusa-modern.png"
+                alt="Elba Modern Kitchen"
                 fill
                 className="object-cover"
                 loading="lazy"
               />
             </motion.div>
 
+            {/* Bottom Image */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="relative h-80 rounded-lg overflow-hidden shadow-xl"
+              className="relative rounded-lg overflow-hidden shadow-xl"
+              style={{
+                width: '526px',
+                height: '360px',
+              }}
             >
               <Image
-                src="/images/brands/bambusa-ad-2.jpg"
-                alt="Bambusa Features"
+                src="/images/products/bambusa/bambusa-modern1.png"
+                alt="75 Years of Artisan Excellence"
                 fill
                 className="object-cover"
                 loading="lazy"
               />
             </motion.div>
           </div>
+        </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <p className="text-gray-700 leading-relaxed mb-6">
-              Bambusa is revolutionizing the toilet paper industry with 100% bamboo-based products. Bamboo grows 30 times 
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="max-w-3xl mx-auto text-center"
+        >
+          <p className="text-gray-700 leading-relaxed font-[Raleway] text-lg">
+          Bambusa is revolutionizing the toilet paper industry with 100% bamboo-based products. Bamboo grows 30 times 
               faster than trees, making it the perfect sustainable alternative. Our toilet paper is soft, strong, and 
               biodegradable, providing comfort while caring for the planet.
-            </p>
-            <p className="text-gray-700 leading-relaxed">
               Made without harsh chemicals, dyes, or fragrances, Bambusa toilet paper is gentle on your skin and the 
               environment. Join us in making a positive impact—one roll at a time.
             </p>
@@ -171,17 +304,45 @@ export default function BambusaPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <p className="text-sm text-gray-500 mb-2">| Product Range Overview</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+          <p
+            className="font-[Raleway]"
+            style={{
+              fontWeight: 600,
+              fontStyle: 'SemiBold',
+              fontSize: '24px',
+              lineHeight: '100%',
+              letterSpacing: '0%',
+              color: '#663E3E',
+            }}
+          >| Product Range Overview</p>
+                     <h2
+            className="font-[Raleway] mt-3"
+            style={{
+              fontWeight: 400,
+              fontStyle: 'Regular',
+              fontSize: '40px',
+              lineHeight: '100%',
+              letterSpacing: '0%',
+              color: '#434343',
+            }}
+          >
               Premium Quality, Planet Friendly
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {products.map((product, index) => (
-              <ProductCard key={product.pack} product={product} index={index} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {currentProducts.map((product, index) => (
+              <ProductCard key={product.model + index} product={product} index={index} />
             ))}
           </div>
+
+          {totalPages > 1 && (
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
+          )}
         </div>
       </section>
 
@@ -195,7 +356,7 @@ export default function BambusaPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6 font-[Raleway]">
               Why Choose Bambusa?
             </h2>
           </motion.div>
@@ -211,8 +372,8 @@ export default function BambusaPage() {
               <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-3xl text-white">🌱</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">100% Bamboo</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold text-gray-800 mb-3 font-[Raleway]">100% Bamboo</h3>
+              <p className="text-gray-600 font-[Raleway]">
                 Made from sustainably harvested bamboo, the fastest-growing plant on Earth.
               </p>
             </motion.div>
@@ -227,8 +388,8 @@ export default function BambusaPage() {
               <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-3xl text-white">♻️</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">Biodegradable</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold text-gray-800 mb-3 font-[Raleway]">Biodegradable</h3>
+              <p className="text-gray-600 font-[Raleway]">
                 Breaks down naturally without harming the environment or septic systems.
               </p>
             </motion.div>
@@ -243,8 +404,8 @@ export default function BambusaPage() {
               <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-3xl text-white">✨</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">Soft & Strong</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold text-gray-800 mb-3 font-[Raleway]">Soft & Strong</h3>
+              <p className="text-gray-600 font-[Raleway]">
                 Ultra-soft texture that's durable and gentle on sensitive skin.
               </p>
             </motion.div>

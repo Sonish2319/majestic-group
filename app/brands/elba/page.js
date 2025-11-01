@@ -84,9 +84,9 @@ function ProductCard({ product, index }) {
           loading="lazy"
         />
       </div>
-      <h3 className="text-xl font-bold text-gray-800 mb-1">{product.name}</h3>
-      <p className="text-sm text-gray-600 mb-1">{product.model}</p>
-      <p className="text-sm text-[#5c4033] font-semibold">{product.type}</p>
+      <h3 className="text-xl font-bold text-gray-800 mb-1 font-[Raleway]">{product.name}</h3>
+      <p className="text-sm text-gray-600 mb-1 font-[Raleway]">{product.model}</p>
+      <p className="text-sm text-[#5c4033] font-semibold font-[Raleway]">{product.type}</p>
     </motion.div>
   )
 }
@@ -244,7 +244,7 @@ export default function ElbaPage() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="relative rounded-lg overflow-hidden shadow-xl"
+              className="relative rounded-lg overflow-hidden mb-5 shadow-xl"
               style={{
                 width: '522px',
                 height: '382px',
@@ -268,7 +268,7 @@ export default function ElbaPage() {
               className="relative rounded-lg overflow-hidden shadow-xl"
               style={{
                 width: '526px',
-                height: '380px',
+                height: '360px',
               }}
             >
               <Image

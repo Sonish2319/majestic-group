@@ -11,55 +11,55 @@ const products = [
     name: 'Washing Machine',
     model: 'Front Load 8kg',
     type: 'Laundry',
-    image: '/images/products/candy/washer-front-load.jpg',
+    image: '/images/products/candy/washer-front-load.png',
   },
   {
     name: 'Washing Machine',
     model: 'Top Load 7kg',
     type: 'Laundry',
-    image: '/images/products/candy/washer-top-load.jpg',
+    image: '/images/products/candy/washer-top-load.png',
   },
   {
     name: 'Refrigerator',
     model: 'Double Door',
     type: 'Cooling',
-    image: '/images/products/candy/refrigerator.jpg',
+    image: '/images/products/candy/refrigerator.png',
   },
   {
     name: 'Dishwasher',
     model: 'Built-in',
     type: 'Kitchen',
-    image: '/images/products/candy/dishwasher.jpg',
+    image: '/images/products/candy/dishwasher.png',
   },
   {
     name: 'Oven',
     model: 'Built-in Electric',
     type: 'Kitchen',
-    image: '/images/products/candy/oven.jpg',
+    image: '/images/products/candy/oven.png',
   },
   {
     name: 'Microwave',
     model: 'Convection',
     type: 'Kitchen',
-    image: '/images/products/candy/microwave.jpg',
+    image: '/images/products/candy/microwave.png',
   },
   {
     name: 'Cooktop',
     model: 'Gas 4 Burner',
     type: 'Kitchen',
-    image: '/images/products/candy/cooktop.jpg',
+    image: '/images/products/candy/cooktop.png',
   },
   {
     name: 'Dryer',
     model: 'Heat Pump',
     type: 'Laundry',
-    image: '/images/products/candy/dryer.jpg',
+    image: '/images/products/candy/dryer.png',
   },
   {
     name: 'Washing Machine',
     model: 'Front Load 9kg',
     type: 'Laundry',
-    image: '/images/products/candy/washer-premium.jpg',
+    image: '/images/products/candy/microwave.png',
   },
 ]
 
@@ -84,9 +84,9 @@ function ProductCard({ product, index }) {
           loading="lazy"
         />
       </div>
-      <h3 className="text-xl font-bold text-gray-800 mb-1">{product.name}</h3>
-      <p className="text-sm text-gray-600 mb-1">{product.model}</p>
-      <p className="text-sm text-[#5c4033] font-semibold">{product.type}</p>
+      <h3 className="text-xl font-bold text-gray-800 mb-1 font-[Raleway]">{product.name}</h3>
+      <p className="text-sm text-gray-600 mb-1 font-[Raleway]">{product.model}</p>
+      <p className="text-sm text-[#5c4033] font-semibold font-[Raleway]">{product.type}</p>
     </motion.div>
   )
 }
@@ -144,7 +144,7 @@ export default function CandyPage() {
       <section className="relative h-[50vh] overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/brands/candy-hero-bg.jpg"
+            src="/images/products/candy/candy-hero-bg1.png"
             alt="Candy Appliances"
             fill
             className="object-cover brightness-75"
@@ -162,14 +162,13 @@ export default function CandyPage() {
           >
             <div className="mb-6">
               <Image
-                src="/images/candy-logo-white.png"
+                src="/images/candy-logo.png"
                 alt="Candy"
                 width={200}
                 height={80}
                 className="mb-4"
               />
             </div>
-            <p className="text-2xl md:text-3xl font-light">Simply. Smart</p>
           </motion.div>
         </div>
       </section>
@@ -184,59 +183,110 @@ export default function CandyPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <p className="text-sm text-gray-500 mb-2">| Candy – Innovation for Modern Living</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                      <p
+            className="font-[Raleway] text-[#663E3E] mb-2"
+            style={{
+              fontWeight: 600,
+              fontSize: '24px',
+              lineHeight: '100%',
+            }}
+          > Candy – Innovation for Modern Living</p>
+                      <h2
+            className="font-[Raleway] text-[#434343]"
+            style={{
+              fontWeight: 400,
+              fontSize: '40px',
+              lineHeight: '100%',
+            }}
+          >
               Smart appliances designed for your everyday life.
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+<div className="flex flex-col md:flex-row justify-center items-start gap-8 mb-16">
+          {/* Left Big Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="relative rounded-lg overflow-hidden shadow-xl flex-shrink-0 mx-auto md:mx-0"
+            style={{
+              width: '768px',
+              height: '765px',
+            }}
+          >
+            <Image
+              src="/images/products/candy/left-first1.png"
+              alt="Elba History"
+              fill
+              className="object-cover"
+              loading="lazy"
+            />
+          </motion.div>
+
+          {/* Right Column (Two stacked images) */}
+          <div
+            className="flex flex-col justify-between mx-auto md:mx-0"
+            style={{
+              width: '526px',
+            }}
+          >
+            {/* Top Image */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="relative h-80 rounded-lg overflow-hidden shadow-xl"
+              className="relative rounded-lg overflow-hidden mb-5 shadow-xl"
+              style={{
+                width: '522px',
+                height: '382px',
+              }}
             >
               <Image
-                src="/images/brands/candy-lifestyle-1.jpg"
-                alt="Candy Modern Home"
+                src="/images/products/candy/candy-modern.png"
+                alt="Elba Modern Kitchen"
                 fill
                 className="object-cover"
                 loading="lazy"
               />
             </motion.div>
 
+            {/* Bottom Image */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="relative h-80 rounded-lg overflow-hidden shadow-xl"
+              className="relative rounded-lg overflow-hidden shadow-xl"
+              style={{
+                width: '526px',
+                height: '360px',
+              }}
             >
               <Image
-                src="/images/brands/candy-lifestyle-2.jpg"
-                alt="Candy Kitchen"
+                src="/images/products/candy/candy-modern1.png"
+                alt="75 Years of Artisan Excellence"
                 fill
                 className="object-cover"
                 loading="lazy"
               />
             </motion.div>
           </div>
+        </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <p className="text-gray-700 leading-relaxed mb-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="max-w-3xl mx-auto text-center"
+        >
+          <p className="text-gray-700 leading-relaxed font-[Raleway] text-lg">
               Candy is a leading global brand in home appliances, offering innovative solutions that combine technology, 
               design, and sustainability. From washing machines to kitchen appliances, Candy products are designed to make 
               everyday life simpler, smarter, and more efficient.
-            </p>
-            <p className="text-gray-700 leading-relaxed">
               With advanced features like smart connectivity, energy efficiency, and intuitive controls, Candy brings 
               cutting-edge technology into your home, making household tasks easier and more enjoyable.
             </p>
@@ -254,8 +304,28 @@ export default function CandyPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <p className="text-sm text-gray-500 mb-2">| Product Range Overview</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+          <p
+            className="font-[Raleway]"
+            style={{
+              fontWeight: 600,
+              fontStyle: 'SemiBold',
+              fontSize: '24px',
+              lineHeight: '100%',
+              letterSpacing: '0%',
+              color: '#663E3E',
+            }}
+          >| Product Range Overview</p>
+                     <h2
+            className="font-[Raleway] mt-3"
+            style={{
+              fontWeight: 400,
+              fontStyle: 'Regular',
+              fontSize: '40px',
+              lineHeight: '100%',
+              letterSpacing: '0%',
+              color: '#434343',
+            }}
+          >
               Smart Solutions for Every Home
             </h2>
           </motion.div>
@@ -286,7 +356,7 @@ export default function CandyPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6 font-[Raleway]">
               Why Choose Candy?
             </h2>
           </motion.div>
@@ -302,8 +372,8 @@ export default function CandyPage() {
               <div className="w-16 h-16 bg-[#5c4033] rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-3xl text-white">🔌</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">Smart Technology</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold text-gray-800 mb-3 font-[Raleway]">Smart Technology</h3>
+              <p className="text-gray-600 font-[Raleway]">
                 Connect and control your appliances remotely with smart features and intuitive interfaces.
               </p>
             </motion.div>
@@ -318,8 +388,8 @@ export default function CandyPage() {
               <div className="w-16 h-16 bg-[#5c4033] rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-3xl text-white">⚡</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">Energy Efficient</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold text-gray-800 mb-3 font-[Raleway]">Energy Efficient</h3>
+              <p className="text-gray-600 font-[Raleway]">
                 Save energy and reduce costs with eco-friendly appliances designed for sustainability.
               </p>
             </motion.div>
@@ -334,8 +404,8 @@ export default function CandyPage() {
               <div className="w-16 h-16 bg-[#5c4033] rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-3xl text-white">✨</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">Modern Design</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold text-gray-800 mb-3 font-[Raleway]">Modern Design</h3>
+              <p className="text-gray-600 font-[Raleway]">
                 Sleek, contemporary designs that complement any home interior and lifestyle.
               </p>
             </motion.div>

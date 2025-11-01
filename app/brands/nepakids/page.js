@@ -2,26 +2,63 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import Image from 'next/image'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const products = [
   {
     name: 'NepaKids Diaper',
     size: '38 pcs',
-    type: 'Newborn',
+    type: 'Newborn1',
     image: '/images/products/nepakids/diaper-38.png',
   },
   {
     name: 'NepaKids Diaper',
     size: '42 pcs',
-    type: 'Small',
+    type: 'Small1',
     image: '/images/products/nepakids/diaper-42.png',
   },
   {
     name: 'NepaKids Diaper',
     size: '50 pcs',
-    type: 'Medium',
+    type: 'Medium1',
+    image: '/images/products/nepakids/diaper-50.png',
+  },
+  {
+    name: 'NepaKids Diaper',
+    size: '38 pcs',
+    type: 'Newborn2',
+    image: '/images/products/nepakids/diaper-38.png',
+  },
+  {
+    name: 'NepaKids Diaper',
+    size: '42 pcs',
+    type: 'Small2',
+    image: '/images/products/nepakids/diaper-42.png',
+  },
+  {
+    name: 'NepaKids Diaper',
+    size: '50 pcs',
+    type: 'Medium2',
+    image: '/images/products/nepakids/diaper-50.png',
+  },
+  {
+    name: 'NepaKids Diaper',
+    size: '38 pcs',
+    type: 'Newborn3',
+    image: '/images/products/nepakids/diaper-38.png',
+  },
+  {
+    name: 'NepaKids Diaper',
+    size: '42 pcs',
+    type: 'Small3',
+    image: '/images/products/nepakids/diaper-42.png',
+  },
+  {
+    name: 'NepaKids Diaper',
+    size: '50 pcs',
+    type: 'Medium3',
     image: '/images/products/nepakids/diaper-50.png',
   },
 ]
@@ -35,10 +72,10 @@ function ProductCard({ product, index }) {
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-[#f5e6d3] rounded-lg p-8 hover:shadow-xl transition-all group"
+      transition={{ duration: 0.5, delay: index * 0.05 }}
+      className="bg-[#f5e6d3] rounded-lg p-6 hover:shadow-xl transition-all group"
     >
-      <div className="relative h-72 mb-4 overflow-hidden rounded-lg">
+      <div className="relative h-64 mb-4 overflow-hidden rounded-lg">
         <Image
           src={product.image}
           alt={product.name}
@@ -47,14 +84,60 @@ function ProductCard({ product, index }) {
           loading="lazy"
         />
       </div>
-      <h3 className="text-xl font-bold text-gray-800 mb-1 text-center">{product.name}</h3>
-      <p className="text-lg text-gray-600 mb-1 text-center">{product.size}</p>
-      <p className="text-sm text-[#5c4033] font-semibold text-center">{product.type}</p>
+      <h3 className="text-xl font-bold text-gray-800 mb-1 font-[Raleway]">{product.name}</h3>
+      <p className="text-sm text-gray-600 mb-1 font-[Raleway]">{product.model}</p>
+      <p className="text-sm text-[#5c4033] font-semibold font-[Raleway]">{product.type}</p>
     </motion.div>
   )
 }
 
+function Pagination({ currentPage, totalPages, onPageChange }) {
+  return (
+    <div className="flex items-center justify-center gap-4 mt-12">
+      <button
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+        className="p-2 rounded-full hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed transition"
+      >
+        <ChevronLeft className="w-6 h-6" />
+      </button>
+      
+      <div className="flex gap-2">
+        {[...Array(totalPages)].map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => onPageChange(idx + 1)}
+            className={`w-10 h-10 rounded-full transition ${
+              currentPage === idx + 1
+                ? 'bg-[#5c4033] text-white'
+                : 'bg-gray-200 hover:bg-gray-300'
+            }`}
+          >
+            {idx + 1}
+          </button>
+        ))}
+      </div>
+
+      <button
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        className="p-2 rounded-full hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed transition"
+      >
+        <ChevronRight className="w-6 h-6" />
+      </button>
+    </div>
+  )
+}
+
 export default function NepaKidsPage() {
+  const [currentPage, setCurrentPage] = useState(1)
+  const productsPerPage = 9
+  const totalPages = Math.ceil(products.length / productsPerPage)
+
+  const indexOfLastProduct = currentPage * productsPerPage
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage
+  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct)
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section with Background */}
@@ -62,9 +145,9 @@ export default function NepaKidsPage() {
         <div className="absolute inset-0">
           <Image
             src="/images/products/nepakids/nepakids-hero-bg.png"
-            alt="NepaKids Baby Care"
+            alt="Candy Appliances"
             fill
-            className="object-cover brightness-90"
+            className="object-cover brightness-75"
             priority
           />
         </div>
@@ -80,13 +163,12 @@ export default function NepaKidsPage() {
             <div className="mb-6">
               <Image
                 src="/images/products/nepakids/nepakids-logo-white.png"
-                alt="NepaKids"
-                width={250}
-                height={100}
+                alt="Candy"
+                width={200}
+                height={80}
                 className="mb-4"
               />
             </div>
-            {/* <p className="text-2xl md:text-3xl font-light">Gentle Protection. Happy Every Step.</p> */}
           </motion.div>
         </div>
       </section>
@@ -101,60 +183,111 @@ export default function NepaKidsPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <p className="text-sm text-gray-500 mb-2">| Nepakids – Gentle Protection, Happy Every Step.</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
-              Soft on skin, strong on leaks - Nepakids cares
+                      <p
+            className="font-[Raleway] text-[#663E3E] mb-2"
+            style={{
+              fontWeight: 600,
+              fontSize: '24px',
+              lineHeight: '100%',
+            }}
+          >| Nepakids – Gentle Protection, Happy Every Step.</p>
+                      <h2
+            className="font-[Raleway] text-[#434343]"
+            style={{
+              fontWeight: 400,
+              fontSize: '40px',
+              lineHeight: '100%',
+            }}
+          >
+             Soft on skin, strong on leaks - Nepakids cares
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+<div className="flex flex-col md:flex-row justify-center items-start gap-8 mb-16">
+          {/* Left Big Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="relative rounded-lg overflow-hidden shadow-xl flex-shrink-0 mx-auto md:mx-0"
+            style={{
+              width: '768px',
+              height: '765px',
+            }}
+          >
+            <Image
+              src="/images/products/nepakids/nepakids-ad-2.png"
+              alt="Elba History"
+              fill
+              className="object-cover"
+              loading="lazy"
+            />
+          </motion.div>
+
+          {/* Right Column (Two stacked images) */}
+          <div
+            className="flex flex-col justify-between mx-auto md:mx-0"
+            style={{
+              width: '526px',
+            }}
+          >
+            {/* Top Image */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="relative h-80 rounded-lg overflow-hidden shadow-xl"
+              className="relative rounded-lg overflow-hidden mb-5 shadow-xl"
+              style={{
+                width: '522px',
+                height: '382px',
+              }}
             >
               <Image
                 src="/images/products/nepakids/nepakids-ad-1.png"
-                alt="NepaKids - Which fits your baby"
+                alt="Elba Modern Kitchen"
                 fill
                 className="object-cover"
                 loading="lazy"
               />
             </motion.div>
 
+            {/* Bottom Image */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="relative h-80 rounded-lg overflow-hidden shadow-xl"
+              className="relative rounded-lg overflow-hidden shadow-xl"
+              style={{
+                width: '526px',
+                height: '360px',
+              }}
             >
               <Image
-                src="/images/products/nepakids/nepakids-ad-2.png"
-                alt="NepaKids Features"
+                src="/images/products/nepakids/nepakids-ad-1.png"
+                alt="75 Years of Artisan Excellence"
                 fill
                 className="object-cover"
                 loading="lazy"
               />
             </motion.div>
           </div>
+        </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <p className="text-gray-700 leading-relaxed mb-6">
-              Designed for comfort and dryness, these diapers use advanced Japanese SAP (Super Absorbent Polymer) technology 
-              for long-lasting protection. Engineered to prevent leaks for up to 12 hours, making them ideal for overnight use.
-            </p>
-            <p className="text-gray-700 leading-relaxed">
-              NepaKids diapers are made with soft, breathable materials that are gentle on your baby's delicate skin, 
-              ensuring maximum comfort while keeping them dry and happy throughout the day and night.
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="max-w-3xl mx-auto text-center"
+        >
+          <p className="text-gray-700 leading-relaxed font-[Raleway] text-lg">
+          Designed for comfort and dryness, these diapers use advanced Japanese SAP (Super Absorbent Polymer) technology 
+          for long-lasting protection. Engineered to prevent leaks for up to 12 hours, making them ideal for overnight use.
+          NepaKids diapers are made with soft, breathable materials that are gentle on your baby's delicate skin, 
+          ensuring maximum comfort while keeping them dry and happy throughout the day and night.
             </p>
           </motion.div>
         </div>
@@ -170,17 +303,45 @@ export default function NepaKidsPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <p className="text-sm text-gray-500 mb-2">| Product Range Overview</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+          <p
+            className="font-[Raleway]"
+            style={{
+              fontWeight: 600,
+              fontStyle: 'SemiBold',
+              fontSize: '24px',
+              lineHeight: '100%',
+              letterSpacing: '0%',
+              color: '#663E3E',
+            }}
+          >| Product Range Overview</p>
+                     <h2
+            className="font-[Raleway] mt-3"
+            style={{
+              fontWeight: 400,
+              fontStyle: 'Regular',
+              fontSize: '40px',
+              lineHeight: '100%',
+              letterSpacing: '0%',
+              color: '#434343',
+            }}
+          >
               Keeping little ones dry, happy, and giggling.
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {products.map((product, index) => (
-              <ProductCard key={product.size} product={product} index={index} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {currentProducts.map((product, index) => (
+              <ProductCard key={product.type + index} product={product} index={index} />
             ))}
           </div>
+
+          {totalPages > 1 && (
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
+          )}
         </div>
       </section>
 
@@ -194,7 +355,7 @@ export default function NepaKidsPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6 font-[Raleway]">
               Why Choose NepaKids?
             </h2>
           </motion.div>
@@ -210,8 +371,8 @@ export default function NepaKidsPage() {
               <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-3xl text-white">💧</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">12-Hour Protection</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold text-gray-800 mb-3 font-[Raleway]">12-Hour Protection</h3>
+              <p className="text-gray-600 font-[Raleway]">
                 Advanced Japanese SAP technology locks away moisture for up to 12 hours of leak-free comfort.
               </p>
             </motion.div>
@@ -226,8 +387,8 @@ export default function NepaKidsPage() {
               <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-3xl text-white">🌸</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">Soft & Gentle</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold text-gray-800 mb-3 font-[Raleway]">Soft & Gentle</h3>
+              <p className="text-gray-600 font-[Raleway]">
                 Ultra-soft materials that are gentle on sensitive baby skin, preventing rashes and irritation.
               </p>
             </motion.div>
@@ -242,8 +403,8 @@ export default function NepaKidsPage() {
               <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-3xl text-white">🌬️</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">Breathable Design</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold text-gray-800 mb-3 font-[Raleway]">Breathable Design</h3>
+              <p className="text-gray-600 font-[Raleway]">
                 Breathable outer layer keeps baby's skin dry and comfortable all day and night.
               </p>
             </motion.div>
