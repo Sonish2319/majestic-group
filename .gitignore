@@ -42,5 +42,5 @@ next-env.d.ts
 
 
 # images and public files
-/public/*
-/public/images/*
+# /public/*
+# /public/images/*
