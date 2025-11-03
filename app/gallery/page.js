@@ -133,8 +133,8 @@ function GallerySection({ brand, tagline, logo, route, images, index }) {
       className="mb-12 sm:mb-16"
     >
       {/* Brand Header */}
-      <div className="flex items-center justify-center mb-8">
-        <div className="text-center">
+      <div className="flex mb-8">
+        <div>
           <Link
             href={route}
             className="inline-block relative w-[180px] sm:w-[220px] md:w-[280px] h-[60px] sm:h-[80px] md:h-[100px] mx-auto mb-2 hover:opacity-90 transition-opacity"
