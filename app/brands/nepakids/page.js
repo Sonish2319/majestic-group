@@ -258,7 +258,7 @@ export default function NepaKidsPage() {
             <p className="text-gray-700 leading-relaxed font-[Raleway] text-base sm:text-lg">
             Designed for comfort and dryness, these diapers use advanced Japanese SAP (Super Absorbent Polymer) technology 
   for long-lasting protection. Engineered to prevent leaks for up to 12 hours, making them ideal for overnight use.
-  NepaKids diapers are made with soft, breathable materials that are gentle on your baby's delicate skin, 
+  NepaKids diapers are made with soft, breathable materials that are gentle on your babys delicate skin, 
   ensuring maximum comfort while keeping them dry and happy throughout the day and night.
             </p>
           </motion.div>
@@ -377,7 +377,7 @@ export default function NepaKidsPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-3 font-[Raleway]">Breathable Design</h3>
               <p className="text-gray-600 font-[Raleway]">
-                Breathable outer layer keeps baby's skin dry and comfortable all day and night.
+                Breathable outer layer keeps babys skin dry and comfortable all day and night.
               </p>
             </motion.div>
           </div>

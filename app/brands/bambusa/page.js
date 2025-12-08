@@ -185,10 +185,10 @@ export default function BambusaPage() {
                   className="text-center mb-10 sm:mb-16"
                 >
                   <p className="font-[Raleway] text-[#663E3E] mb-2 text-lg sm:text-xl font-semibold">
-                  | Bambusa – Sustainable Living
+                  | Bambusa - Sustainable Living
                   </p>
                   <h2 className="font-[Raleway] text-[#434343] text-2xl sm:text-3xl md:text-[40px] font-normal">
-                  Eco-friendly toilet paper that's soft, strong, and sustainable.
+                  Eco-friendly toilet paper thats soft, strong, and sustainable.
                   </h2>
                 </motion.div>
       
@@ -378,7 +378,7 @@ export default function BambusaPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-3 font-[Raleway]">Soft & Strong</h3>
               <p className="text-gray-600 font-[Raleway]">
-                Ultra-soft texture that's durable and gentle on sensitive skin.
+                Ultra-soft texture thats durable and gentle on sensitive skin.
               </p>
             </motion.div>
           </div>

@@ -256,7 +256,7 @@ export default function BambusaPage() {
             className="max-w-3xl mx-auto text-center"
           >
             <p className="text-gray-700 leading-relaxed font-[Raleway] text-base sm:text-lg">
-            Sukoon offers premium sanitary pads designed with women's comfort and confidence in mind. Our pads feature 
+            Sukoon offers premium sanitary pads designed with womens comfort and confidence in mind. Our pads feature 
               advanced absorption technology, ultra-soft materials, and a secure fit that allows you to move freely 
               throughout your day.
               With breathable layers and leak-proof protection, Sukoon pads keep you dry and comfortable for up to 8 hours. 
@@ -362,7 +362,7 @@ export default function BambusaPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-3 font-[Raleway]">Ultra Soft</h3>
               <p className="text-gray-600 font-[Raleway]">
-                Soft, cotton-like surface that's gentle on sensitive skin and prevents irritation.
+                Soft, cotton-like surface thats gentle on sensitive skin and prevents irritation.
               </p>
             </motion.div>
 

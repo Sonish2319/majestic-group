@@ -114,7 +114,7 @@ export default function TestimonialsSection() {
 
           {/* Heading */}
           <h2 className="font-[Raleway] font-normal text-[40px] leading-[100%] tracking-[0%] text-[#434343] mt-5">
-            Because trust isn't optional it's essential.
+            Because trust isnt optional its essential.
           </h2>
         </motion.div>
 
