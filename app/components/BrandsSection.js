@@ -10,9 +10,9 @@ const brands = [
   { name: 'aKids', logo: '/images/akids-logo.png', route: '/brands/nepakids' },
   { name: 'Sukoon', logo: '/images/sukoon-logo.png', route: '/brands/sukoon' },
   { name: 'Bambusa', logo: '/images/bambusa-logo.png', route: '/brands/bambusa' },
-  { name: 'Elba', logo: '/images/elba-logo.png', route: '/brands/elba' },
-  { name: 'Candy', logo: '/images/candy-logo.png', route: '/brands/candy' },
-  { name: 'Elica', logo: '/images/elica-logo.png', route: '/brands/elica' },
+  // { name: 'Elba', logo: '/images/elba-logo.png', route: '/brands/elba' },
+  // { name: 'Candy', logo: '/images/candy-logo.png', route: '/brands/candy' },
+  // { name: 'Elica', logo: '/images/elica-logo.png', route: '/brands/elica' },
 ]
 
 export default function BrandsSection() {

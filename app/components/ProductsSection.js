@@ -19,9 +19,9 @@ const products = [
   { name: 'NepaKids', image: '/images/nepakids.png', route: 'brands/nepakids' },
   { name: 'Sukoon', image: '/images/sukoon.png', route: 'brands/sukoon' },
   { name: 'Bambusa', image: '/images/bambusa.png', route: 'brands/bambusa' },
-  { name: 'Candy', image: '/images/candy.png', route: 'brands/candy' },
-  { name: 'Elba', image: '/images/elba.png', route: 'brands/elba' },
-  { name: 'Elica', image: '/images/elica.png', route: 'brands/elica' },
+  // { name: 'Candy', image: '/images/candy.png', route: 'brands/candy' },
+  // { name: 'Elba', image: '/images/elba.png', route: 'brands/elba' },
+  // { name: 'Elica', image: '/images/elica.png', route: 'brands/elica' },
 ]
 
 function ProductCard({ product, index }) {

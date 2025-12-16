@@ -81,7 +81,8 @@ const baseClasses =
                 <ChevronDown className="ml-1 w-4 h-4" />
               </button>
               <div className="absolute top-full left-0 mt-2 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-                {['Elba', 'Candy', 'Elica', 'Bambusa', 'Sukoon', 'NepaKids'].map(
+                {/* {['Elba', 'Candy', 'Elica', 'Bambusa', 'Sukoon', 'NepaKids'].map( */}
+                {['Bambusa', 'Sukoon', 'NepaKids'].map(
                   (brand) => (
                     <button
                       key={brand}

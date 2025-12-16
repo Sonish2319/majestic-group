@@ -52,7 +52,7 @@ export default function Footer() {
         >
           <h3 className="text-xl font-bold mb-4 text-[#f5e6d3] font-[Raleway]">OUR BRANDS</h3>
           <div className="grid grid-cols-2 gap-4">
-            <div>
+            {/* <div>
               <a
                 href="http://localhost:3000/brands/elba"
                 className="block hover:text-[#f5e6d3] transition mb-2 font-[Raleway]" 
@@ -71,7 +71,7 @@ export default function Footer() {
               >
                 Elica
               </a>
-            </div>
+            </div> */}
             <div>
               <a
                 href="http://localhost:3000/brands/sukoon"

@@ -59,7 +59,9 @@ export default function AboutSection() {
             className="space-y-6 -mt-30"
           >
             <p className="font-[Raleway] font-normal text-[20px] leading-[150%] tracking-[0%] text-gray-700">
-            Majestic Group is a proudly Nepali company dedicated to redefining everyday living through homegrown essentials. From Nepakids diapers to Sukoon sanitary pads and Bambusa eco-friendly toilet paper, we deliver comfort, care, and quality to households across Nepal. Alongside these trusted local brands, we also bring world-class kitchen appliances from Elba, Candy, and Elica—ensuring that every corner of your home reflects innovation, reliability, and style. At Majestic, we believe the best solutions start at home.
+            {/* Majestic Group is a proudly Nepali company dedicated to redefining everyday living through homegrown essentials. From Nepakids diapers to Sukoon sanitary pads and Bambusa eco-friendly toilet paper, we deliver comfort, care, and quality to households across Nepal. Alongside these trusted local brands, we also bring world-class kitchen appliances from Elba, Candy, and Elica—ensuring that every corner of your home reflects innovation, reliability, and style. At Majestic, we believe the best solutions start at home. */}
+            Majestic Group is a proudly Nepali company dedicated to redefining everyday living through homegrown essentials. From Nepakids diapers to Sukoon sanitary pads and Bambusa eco-friendly toilet paper, we deliver comfort, care, and quality to households across Nepal.At Majestic, we believe the best solutions start at home.
+
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}

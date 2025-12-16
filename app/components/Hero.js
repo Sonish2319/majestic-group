@@ -13,12 +13,12 @@ const slides = [
     image: '/images/hero-laundry.png',
     link: '/brands/elba',
   },
-  {
-    title: 'Premium Kitchen Appliances',
-    subtitle: 'Discover',
-    image: '/images/elba.png',
-    link: '/gallery',
-  },
+  // {
+  //   title: 'Premium Kitchen Appliances',
+  //   subtitle: 'Discover',
+  //   image: '/images/elba.png',
+  //   link: '/gallery',
+  // },
   {
     title: 'Eco-Friendly Products',
     subtitle: 'Experience',
