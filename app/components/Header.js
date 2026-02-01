@@ -58,7 +58,7 @@ const baseClasses =
   className="w-[308px] h-[42px] opacity-100 font-raleway font-normal text-[36px] leading-[100%] tracking-[0%] uppercase cursor-pointer"
   style={{ transform: 'rotate(0deg)' }}
 >
-  MAJESTIC GROUP SONISH UPADHYAYA
+  MAJESTIC GROUP
 </button>
           </motion.div>
 
@@ -106,7 +106,7 @@ const baseClasses =
               onClick={() => router.push('/gallery')}
               className={menuItemClass('/gallery')}
             >
-              GALLERY SONISH
+              GALLERY
             </button>
 
             <button
