@@ -58,7 +58,7 @@ const baseClasses =
   className="w-[308px] h-[42px] opacity-100 font-raleway font-normal text-[36px] leading-[100%] tracking-[0%] uppercase cursor-pointer"
   style={{ transform: 'rotate(0deg)' }}
 >
-  MAJESTIC GROUP
+  MAJESTIC GROUP SONISH UPADHYAYA
 </button>
           </motion.div>
 
