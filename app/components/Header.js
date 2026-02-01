@@ -106,7 +106,7 @@ const baseClasses =
               onClick={() => router.push('/gallery')}
               className={menuItemClass('/gallery')}
             >
-              GALLERY
+              GALLERY SONISH
             </button>
 
             <button
